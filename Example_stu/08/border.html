@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:300px;
+            height:300px;
+            border-width:5px 10px 5px 10px;
+
+            margin: 15px;
+            display:inline-block;
+        }
+        .box1{           
+            border-style:solid; /*실선*/
+            border-color:crimson;
+        }
+
+        .box2{
+            border-style:dotted; /*점선*/
+            border-color:blue;
+        }
+
+        .box3{
+            border-style:dashed; /*선으로 된 점선*/
+            border-color:green;
+
+        }
+        h1{
+            padding:10px;
+            border-bottom:2px solid gray;  
+        }
+        p{
+            border-style:dashed;           
+            padding:7px;          
+        }
+        .round{
+            border:2px solid red;
+           /* border-radius: 20px;*/
+                    
+          border-bottom-right-radius: 100px 50px;
+           box-shadow: 10px -2px 5px 0px gray;
+        /* box-shadow: 수평 수직 흐림 번짐 색상 */
+        /* 수평-값 : 왼쪽 수직 -: 위쪽 
+        기본 셰도우 : 오른쪽 아래로 향해있기 때문에 */
+        }
+        #bg{
+            /*background: url(images/pic1.jpg) no-repeat;*/
+            background-image:url(images/pic1.jpg);
+            background-repeat:no-repeat;
+          /*  background-size:cover;*/
+        }
+
+        #circle{
+            width:300px;
+            height:300px;
+            border:2px solid red;
+            border-radius:50%; /*정원 완전한 circle,,,*/
+            background-color: darkgoldenrod;
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    
+    
+    <h1>박스모델</h1>
+    <p >박스 모델은 실제 콘텐츠 영역, 박스와 콘텐츠 영역 사이의 여백인 패딩(padding), 박스의 테두리(border),
+        그리고 여러 박스 모델 간의 여백인 마진(margin) 등의 요소로 구성되어 있습니다.</p>
+ 
+    <div class="round"></div>
+    <div class="round" id="bg"></div>
+    <div id="circle"></div>
+</body>
+</html>

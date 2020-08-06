@@ -1,0 +1,253 @@
+package com.postest;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
+import java.awt.GridLayout;
+
+public class PosTest extends JFrame {
+
+	private JPanel contentPane;
+	private JButton btnNewButton;
+	private JButton btnNewButton_6_1;
+	private JButton btnIce;
+	private JButton btnNewButton_2;
+	private JButton btnNewButton_1_1;
+	private JButton btnIce_1;
+	private JButton btnNewButton_2_1;
+	private JButton btnNewButton_1_2;
+	private JButton btnNewButton_4;
+	private JButton btnNewButton_2_2;
+	private JButton btnNewButton_1_3;
+	private JButton btnNewButton_5;
+	private JButton btnNewButton_2_3;
+	private JButton btnNewButton_6_1_1;
+	private JButton btnNewButton_6_1_2;
+	private JButton btnNewButton_6_1_3;
+	
+	private JTextField textField;
+	String[] menu = {
+			"아메리카노","ICE아메리카노","카페라떼","ICE카페라떼",
+			"카페모카","카푸치노","바닐라라떼","ICE바닐라라떼",
+			"녹차라떼","아이스티","자몽에이드","청포도에이드",
+			"딸기스무디","블루베리스무디","레몬티","유자차"};
+	int[] price = {
+			1500,1800,2500,2500,
+			3000,3000,3500,3500,
+			3500,2500,3500,3500,
+			4000,4000,3000,3000};
+	private JPanel panel;
+	private JCheckBox cb1;
+	private JCheckBox cb2;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PosTest frame = new PosTest();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public PosTest() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 673, 387);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.add(getBtnNewButton());
+		contentPane.add(getBtnNewButton_6_1());
+		contentPane.add(getBtnIce());
+		contentPane.add(getBtnNewButton_2());
+		contentPane.add(getBtnNewButton_1_1());
+		contentPane.add(getBtnIce_1());
+		contentPane.add(getBtnNewButton_2_1());
+		contentPane.add(getBtnNewButton_1_2());
+		contentPane.add(getBtnNewButton_4());
+		contentPane.add(getBtnNewButton_2_2());
+		contentPane.add(getBtnNewButton_1_3());
+		contentPane.add(getBtnNewButton_5());
+		contentPane.add(getBtnNewButton_2_3());
+		contentPane.add(getBtnNewButton_6_1_1());
+		contentPane.add(getBtnNewButton_6_1_2());
+		contentPane.add(getBtnNewButton_6_1_3());
+		contentPane.add(getTextField());
+		contentPane.add(getPanel());
+	}
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("아메리카노");
+			btnNewButton.setBounds(293, 20, 117, 42);
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					
+				}
+			});
+		}
+		return btnNewButton;
+	}
+	private JButton getBtnNewButton_6_1() {
+		if (btnNewButton_6_1 == null) {
+			btnNewButton_6_1 = new JButton("쿠폰");
+			btnNewButton_6_1.setBounds(293, 290, 87, 36);
+		}
+		return btnNewButton_6_1;
+	}
+	private JButton getBtnIce() {
+		if (btnIce == null) {
+			btnIce = new JButton("ICE아메리카노");
+			btnIce.setBounds(413, 20, 117, 42);
+		}
+		return btnIce;
+	}
+	private JButton getBtnNewButton_2() {
+		if (btnNewButton_2 == null) {
+			btnNewButton_2 = new JButton("카페라떼");
+			btnNewButton_2.setBounds(532, 20, 117, 42);
+		}
+		return btnNewButton_2;
+	}
+	private JButton getBtnNewButton_1_1() {
+		if (btnNewButton_1_1 == null) {
+			btnNewButton_1_1 = new JButton("카페모카");
+			btnNewButton_1_1.setBounds(413, 72, 117, 42);
+		}
+		return btnNewButton_1_1;
+	}
+	private JButton getBtnIce_1() {
+		if (btnIce_1 == null) {
+			btnIce_1 = new JButton("ICE카페라떼");
+			btnIce_1.setBounds(293, 72, 117, 42);
+		}
+		return btnIce_1;
+	}
+	private JButton getBtnNewButton_2_1() {
+		if (btnNewButton_2_1 == null) {
+			btnNewButton_2_1 = new JButton("카푸치노");
+			btnNewButton_2_1.setBounds(532, 72, 117, 42);
+		}
+		return btnNewButton_2_1;
+	}
+	private JButton getBtnNewButton_1_2() {
+		if (btnNewButton_1_2 == null) {
+			btnNewButton_1_2 = new JButton("ICE바닐라라떼");
+			btnNewButton_1_2.setBounds(413, 124, 117, 42);
+		}
+		return btnNewButton_1_2;
+	}
+	private JButton getBtnNewButton_4() {
+		if (btnNewButton_4 == null) {
+			btnNewButton_4 = new JButton("바닐라라떼");
+			btnNewButton_4.setBounds(293, 124, 117, 42);
+		}
+		return btnNewButton_4;
+	}
+	private JButton getBtnNewButton_2_2() {
+		if (btnNewButton_2_2 == null) {
+			btnNewButton_2_2 = new JButton("녹차라떼");
+			btnNewButton_2_2.setBounds(532, 124, 117, 42);
+		}
+		return btnNewButton_2_2;
+	}
+	private JButton getBtnNewButton_1_3() {
+		if (btnNewButton_1_3 == null) {
+			btnNewButton_1_3 = new JButton("자몽에이드");
+			btnNewButton_1_3.setBounds(413, 176, 117, 42);
+		}
+		return btnNewButton_1_3;
+	}
+	private JButton getBtnNewButton_5() {
+		if (btnNewButton_5 == null) {
+			btnNewButton_5 = new JButton("아이스티");
+			btnNewButton_5.setBounds(293, 176, 117, 42);
+		}
+		return btnNewButton_5;
+	}
+	private JButton getBtnNewButton_2_3() {
+		if (btnNewButton_2_3 == null) {
+			btnNewButton_2_3 = new JButton("청포도에이드");
+			btnNewButton_2_3.setBounds(532, 176, 117, 42);
+		}
+		return btnNewButton_2_3;
+	}
+	private JButton getBtnNewButton_6_1_1() {
+		if (btnNewButton_6_1_1 == null) {
+			btnNewButton_6_1_1 = new JButton("선택취소");
+			btnNewButton_6_1_1.setBounds(381, 290, 87, 36);
+		}
+		return btnNewButton_6_1_1;
+	}
+	private JButton getBtnNewButton_6_1_2() {
+		if (btnNewButton_6_1_2 == null) {
+			btnNewButton_6_1_2 = new JButton("전체취소");
+			btnNewButton_6_1_2.setBounds(469, 290, 87, 36);
+			btnNewButton_6_1_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
+		}
+		return btnNewButton_6_1_2;
+	}
+	private JButton getBtnNewButton_6_1_3() {
+		if (btnNewButton_6_1_3 == null) {
+			btnNewButton_6_1_3 = new JButton("결제");
+			btnNewButton_6_1_3.setBounds(558, 290, 87, 36);
+		}
+		return btnNewButton_6_1_3;
+	}
+	private JTextField getTextField() {
+		if (textField == null) {
+			textField = new JTextField();
+			textField.setBounds(35, 291, 214, 36);
+			textField.setColumns(10);
+		}
+		return textField;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setBounds(293, 232, 352, 49);
+			panel.setLayout(new GridLayout(0, 2, 0, 0));
+			panel.add(getCb1());
+			panel.add(getCb2());
+		}
+		return panel;
+	}
+	private JCheckBox getCb1() {
+		if (cb1 == null) {
+			cb1 = new JCheckBox("휘핑 추가");
+			
+		}
+		return cb1;
+	}
+	private JCheckBox getCb2() {
+		if (cb2 == null) {
+			cb2 = new JCheckBox("시럽 추가");
+		}
+		return cb2;
+	}
+}

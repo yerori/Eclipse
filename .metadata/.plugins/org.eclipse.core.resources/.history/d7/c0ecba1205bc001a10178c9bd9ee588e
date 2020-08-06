@@ -1,0 +1,247 @@
+package com.postest;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
+import java.awt.GridLayout;
+
+public class PosTest extends JFrame implements ItemListener  {
+	JButton[] MBtn = new JButton[15];
+	String[] menu = {
+			"아메리카노","ICE아메리카노","카페라떼","ICE카페라떼",
+			"카페모카","카푸치노","바닐라라떼","ICE바닐라라떼",
+			"녹차라떼","아이스티","자몽에이드","청포도에이드",
+			"딸기스무디","블루베리스무디","유자차"};
+	int[] price = {
+			4000,4500,4500,5000,
+			5000,5000,5000,5500,
+			5500,4000,5000,5000,
+			5500,5500,5000};
+			JTextField tf = new JTextField(30);
+			JButton[] SBtn = new JButton[4];
+			String[] Str = {"쿠폰","선택취소","전체취소","결제"};
+			String [] ColName = {"메뉴","수량","가격"};
+			String [][] Data ;
+			int count =1;
+			DefaultTableModel model = new DefaultTableModel(Data,ColName);
+
+	JTable table = new JTable(model);
+	JPanel p1;
+	JCheckBox cb1, cb2;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PosTest frame = new PosTest();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	class Screen extends JPanel{
+		Screen(){
+			setBackground(Color.WHITE);
+			DefaultTableModel m = (DefaultTableModel)table.getModel();
+			table.setRowHeight(50);
+			table.getTableHeader().setFont(new Font("맑은고딕", Font.BOLD, 15));
+			add(new JScrollPane(table));
+		}
+	}
+	
+	class MenuBtn extends JPanel{
+		MenuBtn(){
+			setLayout(new GridLayout(6,3,3,3));
+			setBackground(Color.WHITE);
+			for(int i=0;i<MBtn.length;i++) {
+				MBtn[i]= new JButton(menu[i]);
+				add(MBtn[i]);
+			}
+		}
+	}
+	
+	class StrBtn extends JPanel{
+		StrBtn(){
+			setBackground(Color.WHITE);
+			setLayout(new GridLayout(1,4,3,3));
+			
+			for(int i=0;i<Str.length;i++) {
+				SBtn[i]= new JButton(Str[i]);
+				add(SBtn[i]);
+			}
+		}
+	}
+	
+
+	public PosTest() {
+		setLayout(null);
+		setBackground(Color.WHITE);
+		table.getTableHeader().setFont(new Font("kopub돋움체", Font.BOLD, 15));
+		MenuBtn mbtn = new MenuBtn();
+		StrBtn sbtn = new StrBtn();
+		Screen sc = new Screen();
+		
+		//금액란
+		tf.setSize(450, 70);
+		tf.setLocation(50, 480);
+		add(tf);
+		
+		sc.setSize(500, 500);
+		sc.setLocation(25, 20);
+		add(sc);
+		
+		mbtn.setSize(400, 430);
+		mbtn.setLocation(530, 23);
+		add(mbtn);
+		
+		sbtn.setSize(400, 70);
+		sbtn.setLocation(530, 480);
+		add(sbtn);
+		
+		
+		//메뉴추가
+		for(int i=0;i<MBtn.length;i++) {
+			final int index =i;
+			MBtn[i].addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					JButton MBtn = (JButton)e.getSource();
+					DefaultTableModel m = (DefaultTableModel)table.getModel();
+					m.addRow(new Object[]{menu[index],count,price[index]});
+				}
+			});
+		}
+		//쿠폰
+		SBtn[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton MBtn = (JButton)e.getSource();
+
+				int price = (Integer)table.getValueAt(table.getSelectedRow(),table.getSelectedColumn());
+				table.setValueAt(price-500, table.getSelectedRow(), 2);
+			}
+		});
+		
+			//선택취소
+		SBtn[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton MBtn = (JButton)e.getSource();
+				DefaultTableModel m = (DefaultTableModel)table.getModel();
+				
+				m.removeRow(table.getSelectedRow());
+			}
+		});
+		
+		
+		//전체취소
+		SBtn[2].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton MBtn = (JButton)e.getSource();
+				DefaultTableModel m = (DefaultTableModel)table.getModel();
+				
+				m.setRowCount(0);
+				tf.setText("");
+			}
+		});
+		
+		//결제버튼
+		SBtn[3].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "결제하겠습니까?", "결제 확인",JOptionPane.YES_NO_OPTION);
+				if(JOptionPane.YES_OPTION==result) {
+					JButton MBtn = (JButton)e.getSource();
+					int rowCont = table.getRowCount();
+					int sum =0;
+					for(int i=0;i<rowCont;i++) {
+						sum += (int)table.getValueAt(i, 2);
+					}
+					tf.setText(" 총 금액 : "+sum+"");
+					tf.setFont(new Font("맑은고딕", Font.BOLD, 40));
+				}				
+			}
+		});
+	}
+	
+	private JPanel getP1() {
+		if (p1 == null) {
+			p1 = new JPanel();
+			p1.setBounds(293, 232, 352, 49);
+			p1.setLayout(new GridLayout(0, 2, 0, 0));
+			p1.add(getCb1());
+			p1.add(getCb2());
+		}
+		return p1;
+	}
+	private JCheckBox getCb1() {
+		if (cb1 == null) {
+			cb1 = new JCheckBox("휘핑 추가");
+			
+		}
+		return cb1;
+	}
+	private JCheckBox getCb2() {
+		if (cb2 == null) {
+			cb2 = new JCheckBox("시럽 추가");
+		}
+		return cb2;
+	}
+	private JPanel getPanel_1() {
+		if (panel_1 == null) {
+			panel_1 = new JPanel();
+			panel_1.setBounds(22, 20, 227, 252);
+			panel_1.setLayout(new GridLayout(1, 0, 0, 0));
+			panel_1.add(getTable());
+		}
+		return panel_1;
+	}
+	private JTable getTable() {
+		if (table == null) {
+			table = new JTable();
+		}
+		return table;
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		JCheckBox cb = (JCheckBox) e.getSource();
+
+		if(cb1.isSelected()) {
+			JButton MBtn = (JButton)e.getSource();
+			DefaultTableModel m = (DefaultTableModel)table.getModel();
+			//m.addRow(new Object[]{menu[index],count,price[index]});
+			m.addRow(new Object[] {cb1,"","500원"});
+			
+		}else if(cb1.isSelected()) {
+			JButton MBtn = (JButton)e.getSource();
+			DefaultTableModel m = (DefaultTableModel)table.getModel();
+			m.addRow(new Object[] {cb2,"","500원"});
+		}
+		
+	}
+}

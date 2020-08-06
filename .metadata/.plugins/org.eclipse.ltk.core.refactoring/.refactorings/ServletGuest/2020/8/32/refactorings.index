@@ -1,0 +1,12 @@
+1596586499536	Move 'guestbook' to 'WebContent'
+1596587790204	Move 'context.xml' to 'META-INF'
+1596587794441	Copy file
+1596588073027	Copy package
+1596588076112	Delete element
+1596588183239	Rename type 'GuestListAction'
+1596588475927	Delete element
+1596591718098	Rename resource 'list.jsp'
+1596689615823	Delete element
+1596689647210	Delete element
+1596689659223	Move 'upload.jsp' to 'file'
+1596691131916	Rename type 'FileUploadAAction'

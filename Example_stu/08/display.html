@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    #block img{
+        display:block;
+        margin:10px;
+        }
+    nav{
+        width:100%;
+        height:60%;
+        background-color: #069;
+    }
+    nav ul{       
+        list-style:none; 
+        text-align:center;
+      } 
+
+    nav ul li{
+        display:inline-block;
+        margin:20px;
+       /* border-top:3px solid black;*/
+        padding:10px 15px; /* 앞px: 위아래 뒤px: 좌우 */
+        
+    
+
+    }
+    nav ul li a{
+        text-decoration: none;
+        color:white;
+
+    }
+
+   /* nav ul li :hover{
+        background-color:rgb(196,196,196);
+    }*/
+
+
+
+    </style>
+</head>
+<body>
+
+    <nav>  
+        <ul>
+             <!-- a href="#": 어떤걸 링크걸지모르겠다,,  -->
+            <li><a href="#">애완견종류</a></li>
+            <li><a href="#">입양하기</a></li>
+            <li><a href="#">건강돌보기</a></li>
+            <li><a href="#">더불어살기</a></li>
+        </ul>
+    </nav>  
+<h1>애완견 종류</h1>
+
+    <div id="inline">
+    <img src="images/pic1.jpg">
+    <img src="images/pic2.jpg">
+    <img src="images/pic3.jpg">
+    </div>
+    <div id="block">
+        <img src="images/pic1.jpg">
+        <img src="images/pic2.jpg">
+        <img src="images/pic3.jpg">
+        </div>
+
+</body>
+</html>

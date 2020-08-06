@@ -1,0 +1,14 @@
+127.0.0.1 - - [14/Jul/2020:09:02:01 +0900] "GET / HTTP/1.1" 404 807
+127.0.0.1 - - [14/Jul/2020:09:02:39 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:40 +0900] "GET /FirstJSP/address/list.jsp HTTP/1.1" 200 3010
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:40 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:43 +0900] "GET /FirstJSP/address/detail.jsp?num=12 HTTP/1.1" 200 2052
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:45 +0900] "POST /FirstJSP/address/updatePro.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:45 +0900] "GET /FirstJSP/address/list.jsp HTTP/1.1" 200 2978
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:49 +0900] "GET /FirstJSP/address/zipCheck.jsp HTTP/1.1" 200 1181
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:09:02:52 +0900] "GET /FirstJSP/address/zipCheck.jsp?dong=%EC%84%9C%EB%A9%B4 HTTP/1.1" 200 172353
+127.0.0.1 - - [14/Jul/2020:16:00:16 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:16:00:16 +0900] "GET /FirstJSP/Test/input.jsp HTTP/1.1" 200 2446
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:16:00:16 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+127.0.0.1 - - [14/Jul/2020:16:16:33 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [14/Jul/2020:16:16:33 +0900] "GET /FirstJSP/address/detail.jsp HTTP/1.1" 500 2650

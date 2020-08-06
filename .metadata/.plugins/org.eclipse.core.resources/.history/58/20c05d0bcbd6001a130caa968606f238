@@ -1,0 +1,45 @@
+package com.guest.action;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.guest.model.GuestDAO;
+import com.guest.model.GuestDTO;
+
+
+@WebServlet("/guestbook/list.gb")
+public class GuestListAction extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+    public GuestListAction() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		GuestDAO dao = GuestDAO.getInstance();
+		try {
+			ArrayList<GuestDTO> arr = dao.guestList();
+			request.setAttribute("guestbook", arr);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("listResult.jsp");
+			rd.forward(request, response);
+		} catch (Exception e) {		
+			e.printStackTrace();
+		}		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		doGet(request, response);
+	}
+
+}

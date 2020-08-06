@@ -1,0 +1,14 @@
+package com.postest;
+
+import javax.swing.JPanel;
+
+public class tt extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public tt() {
+
+	}
+
+}

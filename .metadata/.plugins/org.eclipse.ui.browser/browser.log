@@ -1,0 +1,51 @@
+
+7월 08, 2020 16:29:49.40 NEW SESSION
+7월 08, 2020 16:29:49.40 [4192:8956:0708/162949.409:ERROR:device_event_log_impl.cc(208)] [16:29:49.405] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+
+7월 13, 2020 14:13:30.66 NEW SESSION
+7월 13, 2020 14:13:30.66 [4500:8060:0713/141330.660:ERROR:device_event_log_impl.cc(208)] [14:13:30.660] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+
+7월 13, 2020 15:00:47.37 NEW SESSION
+7월 13, 2020 15:00:47.37 [4076:596:0713/150047.377:ERROR:device_event_log_impl.cc(208)] [15:00:47.377] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+7월 13, 2020 15:04:19.99 [12928:5952:0713/150419.994:ERROR:device_event_log_impl.cc(208)] [15:04:19.994] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+
+7월 15, 2020 16:28:04.32 NEW SESSION
+7월 15, 2020 16:28:04.32 [1040:12148:0715/162804.308:ERROR:device_event_log_impl.cc(208)] [16:28:04.319] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+
+7월 16, 2020 13:43:36.58 NEW SESSION
+7월 16, 2020 13:43:36.58 [4436:10076:0716/134336.583:ERROR:device_event_log_impl.cc(208)] [13:43:36.576] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+7월 16, 2020 15:55:55.99 [5560:568:0716/155555.995:ERROR:device_event_log_impl.cc(208)] [15:55:55.995] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+7월 16, 2020 15:56:24.04 [10072:6608:0716/155624.042:ERROR:device_event_log_impl.cc(208)] [15:56:24.042] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+
+7월 20, 2020 14:05:38.57 NEW SESSION
+7월 20, 2020 14:05:38.57 [6440:5820:0720/140538.568:ERROR:device_event_log_impl.cc(208)] [14:05:38.568] Bluetooth: bluetooth_adapter_winrt.cc:1060 Getting Default Adapter failed.
+7월 20, 2020 14:11:52.22 [6440:5820:0720/141152.222:ERROR:CONSOLE(1)] "Refused to execute inline event handler because it violates the following Content Security Policy directive: "script-src 'strict-dynamic' 'sha256-1+GSDjMMklBjZY0QiWq+tGupCvajw4Xbn46ect2mZgM=' 'sha256-2mX1M62Fd0u8q0dQY2mRsK5S1NS9jJuQAvyE8tD0dkQ=' 'sha256-EtIKSV82ixJHE3AzqhoiVbUGKG+Kd8XS0fFToow29o0=' 'sha256-HqdPsO6hNmT/mfSeGdcX3eEGrZVva7AKD2Z2+1ujCZ8=' 'sha256-yRYEEgxOlReCDbng6tDVSK7zG75cmupC9JEV1PmCFSc=' 'sha256-IEF9PjeyU0vsr61C8cm3JQOerOYWdBsaGddCSPp6tZs=' 'sha256-C9ctze2LhHtwL+fcPVPkmVRYjQgXTGs4xfBAzlQwGWk=' 'sha256-yLEglhV+BF7KFz2rbtMK88ZtBxQpwg9QN3CiKR3rffw='". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution.
+7월 20, 2020 14:11:52.23 ", source: chrome-search://local-ntp/local-ntp.html (1)
+7월 20, 2020 14:19:00.14 [6440:5820:0720/141900.145:ERROR:CONSOLE(1)] "Refused to execute inline event handler because it violates the following Content Security Policy directive: "script-src 'strict-dynamic' 'sha256-1+GSDjMMklBjZY0QiWq+tGupCvajw4Xbn46ect2mZgM=' 'sha256-2mX1M62Fd0u8q0dQY2mRsK5S1NS9jJuQAvyE8tD0dkQ=' 'sha256-EtIKSV82ixJHE3AzqhoiVbUGKG+Kd8XS0fFToow29o0=' 'sha256-HqdPsO6hNmT/mfSeGdcX3eEGrZVva7AKD2Z2+1ujCZ8=' 'sha256-yRYEEgxOlReCDbng6tDVSK7zG75cmupC9JEV1PmCFSc=' 'sha256-IEF9PjeyU0vsr61C8cm3JQOerOYWdBsaGddCSPp6tZs=' 'sha256-C9ctze2LhHtwL+fcPVPkmVRYjQgXTGs4xfBAzlQwGWk=' 'sha256-yLEglhV+BF7KFz2rbtMK88ZtBxQpwg9QN3CiKR3rffw='". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution.
+7월 20, 2020 14:19:00.15 ", source: chrome-search://local-ntp/local-ntp.html (1)
+
+7월 22, 2020 10:36:24.22 NEW SESSION
+7월 22, 2020 10:36:24.22 [6644:9468:0722/103624.216:ERROR:device_event_log_impl.cc(208)] [10:36:24.216] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+7월 23, 2020 10:49:20.59 NEW SESSION
+7월 23, 2020 10:49:20.59 [8864:7572:0723/104920.583:ERROR:device_event_log_impl.cc(208)] [10:49:20.583] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+7월 23, 2020 12:18:43.07 [9476:2328:0723/121843.075:ERROR:device_event_log_impl.cc(208)] [12:18:43.075] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+7월 27, 2020 12:51:08.09 NEW SESSION
+7월 27, 2020 12:51:08.09 [3940:4604:0727/125108.090:ERROR:device_event_log_impl.cc(208)] [12:51:08.090] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+7월 27, 2020 12:51:56.97 [6992:4448:0727/125156.977:ERROR:device_event_log_impl.cc(208)] [12:51:56.977] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+7월 28, 2020 10:38:02.94 NEW SESSION
+7월 28, 2020 10:38:02.94 [4896:9524:0728/103802.948:ERROR:device_event_log_impl.cc(208)] [10:38:02.948] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+7월 29, 2020 16:28:25.66 NEW SESSION
+7월 29, 2020 16:28:25.66 [7784:3160:0729/162825.665:ERROR:device_event_log_impl.cc(208)] [16:28:25.665] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 05, 2020 10:03:46.16 NEW SESSION
+8월 05, 2020 10:03:46.16 [14900:9736:0805/100346.163:ERROR:device_event_log_impl.cc(208)] [10:03:46.163] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 06, 2020 12:45:06.18 NEW SESSION
+8월 06, 2020 12:45:06.18 [10652:1280:0806/124506.183:ERROR:device_event_log_impl.cc(208)] [12:45:06.177] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 06, 2020 14:28:55.66 NEW SESSION
+8월 06, 2020 14:28:55.66 [7924:13912:0806/142855.660:ERROR:device_event_log_impl.cc(208)] [14:28:55.660] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.

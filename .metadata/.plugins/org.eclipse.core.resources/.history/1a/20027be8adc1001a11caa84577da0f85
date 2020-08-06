@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+function check(){
+	//alert(document.getElementsByName("hobby").length);
+	if(document.getElementById("name").value==""){
+		alert("이름을 입력하세요"); 
+		return; // 돌려주는 값이 없을땐 종료의 의미
+	}
+	
+	if(document.getElementById("studentNum").value==""){
+		alert("학번을 입력하세요.");
+		return;
+	}
+	
+	//JSP : 따로 int, boolean형 두지 않아도 됨 
+	var obj = document.getElementsByName("hobby"); // 배열이니까 getElement"s"ByName
+	var checkCnt =false; //true,false로 둬도 됨
+	for(i=0; i<obj.length;i++){
+		if(obj[i].checked){
+			checkCnt=true;
+		}		
+	}
+	
+	if(checkCnt==false){
+		alert("취미를 선택해주세요.");
+		return;
+	}
+	
+	form.submit(); // submit -> button으로 바꾼 후 전송 시 ,, name으로 지정했으니 그냥 form.submit
+}
+
+</script>
+</head>
+<body>
+
+<!--메소드에는 get, post방식이 있다.!!! -->
+<form action="inputResult.jsp" method="post" name="form"> <!-- ★ get은 기본적인 메소드 : 주소 전부다 주소창에 기입됨-->
+ 
+이름 : <input type="text" name="name" id="name"><br>
+학번 : <input type="text" name="num" id="studentNum"><br> 
+<br>
+성별 :
+ <input type = "radio" name = "gender" value = "man" checked  id="man">
+<label for="man">남자</label>
+<input type = "radio" name = "gender" value = "woman" id="feman">
+<label for="feman">여자</label> 
+
+
+<br>
+전공 : <select name="major"> <!-- size : 보이는 칸의 수, multiple : 다중선택 -->
+<option value="국문학과" selected>국문학과</option>
+<option value="영문학과">영문학과</option>
+<option value="수학과"  >수학과</option>
+<option value="정치학과">정치학과</option>
+<option value="체육학과">체육학과</option>
+</select>
+<br>
+취미<br>
+<input type="checkbox"name="hobby" value="운동">운동
+<input type="checkbox"name="hobby" value="운동1">운동1
+<input type="checkbox"name="hobby" value="운동2">운동2
+<input type="checkbox"name="hobby" value="운동3">운동3
+<input type="checkbox"name="hobby" value="운동4">운동4
+
+
+<input type="button" value="보내기" onclick="check()"> <!-- 버튼은 모양만 버튼 ,, ()속 빈공간 : 인자가 없는 함수로 만들기 -->
+<input type="reset" value="취소">
+
+
+</form>
+</body>
+</html>
