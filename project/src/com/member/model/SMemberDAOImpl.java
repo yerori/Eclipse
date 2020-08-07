@@ -212,16 +212,6 @@ public class SMemberDAOImpl implements MemberDAO {
 		return count; 
 	}
 
-	//´Ý±â
-		private void closeConnection(Connection con, PreparedStatement ps) {	
-				try {
-					if(ps!=null) ps.close();
-					if(con!=null) con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-		}
 		
 	public int loginCheck(String userid, String pwd) {
 		Connection con = null;
@@ -249,7 +239,18 @@ public class SMemberDAOImpl implements MemberDAO {
 		}
 		return flag;	
 	}
-		
+	
+
+	//´Ý±â
+		private void closeConnection(Connection con, PreparedStatement ps) {	
+				try {
+					if(ps!=null) ps.close();
+					if(con!=null) con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+		}
 		private void closeConnection(Connection con, Statement st,ResultSet rs) {
 		
 				try {

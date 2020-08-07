@@ -14,7 +14,7 @@ $(document).ready(function(){
 	})
 				
 	$("#send").click(function(){ //전송버튼 클릭
-		if(${empty sessionScope.login}){
+		if(${not empty sessionScope.login}){
 			//sessionScope.login==null
 			alert("로그인을 하세요");
 			return false;
