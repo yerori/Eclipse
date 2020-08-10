@@ -17,10 +17,7 @@ import com.board.model.CommentDTO;
 @WebServlet("/board/commentInsert")
 public class CommentInsertAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public CommentInsertAction() {
         super();
         // TODO Auto-generated constructor stub
