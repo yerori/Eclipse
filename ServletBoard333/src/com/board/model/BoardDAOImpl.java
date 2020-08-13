@@ -212,7 +212,6 @@ public class BoardDAOImpl implements BoardDAO{
 		try {
 			con=getConnection();
 			String sql = "insert into commenttable (cnum,userid,msg,regdate,bnum) values (commenttable_seq.nextval,?,?,sysdate,?)";
-			System.out.println(sql);
 			ps = con.prepareStatement(sql);
 			ps.setString(1, comment.getUserid());
 			ps.setString(2, comment.getMsg());

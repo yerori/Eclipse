@@ -25,6 +25,7 @@ $(function(){
 			url : "loginPro.jsp",
 			data : {"userid" : $("#userid").val(), "pwd":$("#pwd").val()},
 			success : function(value){
+				
 // 				alert(value.trim());
 				if(value.trim()==-1){
 					alert("회원이 아닙니다. 회원가입 하세요.");

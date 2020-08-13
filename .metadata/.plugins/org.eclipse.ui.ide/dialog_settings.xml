@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\admin\Downloads\2차프로젝트(jsp,oracle,웹프로그램) (2)"/>
+		<item value="C:\Users\admin\Downloads\WebProject-master"/>
+		<item value="C:\Users\admin\Desktop\HotelManagementSystem-master"/>
+		<item value="C:\Users\admin\Desktop\ServletHotel-master"/>
 		<item value="C:\Users\admin\Desktop\marian-master"/>
 	</list>
 	<section name="NewWizardAction">

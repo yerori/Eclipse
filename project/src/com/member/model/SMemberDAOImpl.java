@@ -212,7 +212,7 @@ public class SMemberDAOImpl implements MemberDAO {
 		return count; 
 	}
 
-		
+	//로그인 체크
 	public int loginCheck(String userid, String pwd) {
 		Connection con = null;
 		Statement st = null;

@@ -1,9 +1,0 @@
-package com.guest.model;
-
-public class PageUtil {
-	private int currentPage;
-	private int endPage;
-	private int startPage;
-	private int totPage;
-	private int pageBlock;
-}

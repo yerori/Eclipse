@@ -23,6 +23,7 @@ int count = dao.memberCount();
 <body>
 <br>
 
+
 <!-- div: 블럭,, span: 단순히 영역 -->
 
 <div align="right" style="margin-right:20px">

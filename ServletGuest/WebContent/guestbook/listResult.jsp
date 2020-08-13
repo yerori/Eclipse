@@ -40,6 +40,8 @@
 	</tr>
 	</c:forEach>	
 </table>
+
+
 <div align="center">
 	<c:if test="${pu.startPage > pu.pageBlock }"> <!-- 이전 --> 	<!-- '' : string이니까 붙여주기 -->
 	 <a href="javascript:getData(${pu.startPage-pu.pageBlock},'${pu.field }','${pu.word }')">[이전]</a>

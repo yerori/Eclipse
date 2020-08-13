@@ -22,8 +22,8 @@ $(document).ready(function(){
 			  $("#commentResult").html(htmlStr);
 			}		
 		)
-	$("#commentBtn").on("click",function(){
 		
+	$("#commentBtn").on("click",function(){		
 	 $.ajax({
 		type:"get",
 		url:"commentInsert",

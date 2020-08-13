@@ -28,11 +28,13 @@ public class CommentInsertAction extends HttpServlet {
 		int bnum = Integer.parseInt(request.getParameter("num"));
 		HttpSession session = request.getSession();
 		String userid=(String)session.getAttribute("userid");
-//		if(userid==null) { //로그인 안됨
-//			response.setContentType("text/html;charset=utf-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("1");
-//		}else {//로그인 됨
+		if(userid==null) { //로그인 안됨
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('ddd')");
+			out.println("</script>");
+		}else {//로그인 됨
 			CommentDTO comment = new CommentDTO();
 			comment.setBnum(bnum);
 			comment.setMsg(msg);
@@ -44,6 +46,7 @@ public class CommentInsertAction extends HttpServlet {
 		// 굳이 commentListAction 복붙 하지 않고, 이렇게 호출하면 됨
 			response.sendRedirect("commentlist?num="+bnum);
 				
+		}
 		}
 	//}
 	
