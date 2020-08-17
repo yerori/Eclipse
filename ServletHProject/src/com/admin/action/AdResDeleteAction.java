@@ -1,4 +1,4 @@
-package com.reservation.action;
+package com.admin.action;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,28 +9,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.reservation.model.ReservationDAOImpl;
 
-@WebServlet("/admin/roomdelete")
-public class RoomDeleteAction extends HttpServlet {
+
+@WebServlet("/admin/resdelete")
+public class AdResDeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-    public RoomDeleteAction() {
+
+    public AdResDeleteAction() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		int rsno = Integer.parseInt(request.getParameter("rsno"));
 		
-		int rno = Integer.parseInt(request.getParameter("rno"));
-
 		ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
-		dao.roomDelete(rno);
-
+		dao.adminDelete(rsno);
 		
-		response.sendRedirect("roomlist");
+		response.sendRedirect("reslist");
 		
 	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

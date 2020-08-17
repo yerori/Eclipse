@@ -65,37 +65,62 @@ margin:0 auto;
 <tbody>
  <tr>
  <th>방번호</th>
- <td><input type="text" id="box" name="id" readonly="readonly" size="50" value="${room.rno }"></td>
+ <td><input type="text" id="rno" name="rno" readonly="readonly" size="50" value="${room.rno }"></td>
  </tr>
  <tr>
  <th>방이름</th>
- <td><input type="email" id="box" name="email" size="50"  value="${room.rname }"></td>
+ <td><input type="text" id="rname" name="rname" size="50"  value="${room.rname }">
+ </td>
  </tr>
  
  <tr>
   <th>최대 성인 수용 인원</th>
- <td><input type="text" id="box" name="subject" size="50"  value="${room.men }"></td>
+ <td>    <select name="tot_ad" id="tot_ad">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+         </select>
+         <script>
+    $("#tot_ad option").each(function(){
+    	if($(this).val()=="${room.tot_ad }"){
+    	$(this).prop("selected",true);
+    	}
+    })
+    </script></td>
  </tr>
  
  <tr>
   <th>최대 아기 수용 인원</th>
- <td><input type="text" id="box" name="content" size="50"  value="${room.baby }"></td>
+ <td><select name="tot_ch" id="tot_ch">
+ 		  <option value="1">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+         </select>
+          <script>
+    $("#tot_ch option").each(function(){
+    	if($(this).val()=="${room.tot_ch }"){
+    	$(this).prop("selected",true);
+    	}
+    })
+    </script>
  </tr>
 
  <tr>
   <th>가격</th>
- <td><input type="text" id="box" name="content" size="50"  value="${room.price }"></td>
+ <td><input type="text" id="price" name="price" size="50"  value="${room.price }"></td>
  </tr>
  
   <tr>
   <th>이미지</th>
- <td><img src="../hotel/assets/img/room/${room.rimage }" id="img" alt=""></td>
+ <td><input type="file" id="rimage" name="rimage" id="img"></td>
  </tr>
 <tr>
 <td colspan="2" align="center">
    <input type="submit" class="btn btn1 d-none d-lg-block " id="btn" value="수정"> 
    <input type="button"  class="btn btn1 d-none d-lg-block " id="delBtn" value="삭제" onclick="delFunc('${room.rno }')">
-   <input type="reset" class="btn btn1 d-none d-lg-block " id="btn" value="취소"></td>
 </tbody>
 </table>
 </div>

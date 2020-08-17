@@ -40,7 +40,7 @@ public class ComUpdateAction extends HttpServlet {
 		
 		BoardDAOImpl dao = BoardDAOImpl.getInstance();
 		dao.contentUpdate(com);
-		response.sendRedirect("list");
+		response.sendRedirect("conEnd.jsp");
 
 		}		
 	}

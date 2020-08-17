@@ -1,6 +1,7 @@
 package com.reservation.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,40 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.guest.model.GuestDAOImpl;
+import com.reservation.model.AdminDTO;
 import com.reservation.model.ReservationDAOImpl;
+import com.reservation.model.ReservationDTO;
 import com.reservation.model.RoomDTO;
 
-
-@WebServlet("/admin/roominsert")
-public class RoomInsertAction extends HttpServlet {
+@WebServlet("/reserve/respay")
+public class ResPayAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
-    public RoomInsertAction() {
+
+    public ResPayAction() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("adRoomInsert.jsp");
+		request.setCharacterEncoding("utf-8");
+		ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
+		int rsno = Integer.parseInt(request.getParameter("rsno"));
+		
+		
+		AdminDTO admin = dao.adminDetail(rsno);
+		
+		request.setAttribute("resArr", admin);
+		RequestDispatcher rd = request.getRequestDispatcher("reservationPay.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getParameter("utf-8");
-		
-		RoomDTO room = new RoomDTO();
-		room.setRname(request.getParameter("rname"));
-		room.setTot_ad(Integer.parseInt(request.getParameter("tot_ad")));
-		room.setTot_ch(Integer.parseInt(request.getParameter("tot_ch")));
-		room.setPrice(request.getParameter("price"));
-		room.setRimage(request.getParameter("rimage"));
-
-		ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
-		dao.roomInsert(room);
-		response.sendRedirect("roomlist");
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

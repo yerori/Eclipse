@@ -1,6 +1,13 @@
 package com.reservation.model;
 
-public class ReservationDTO {
+public class AdminDTO {
+	//room
+	private int rno;
+	private String rname;
+	private String price;
+	private String rimage;
+	
+	//reservation
 	private int rsno;
 	private int occupancy; //예약된 날짜
 	private int tot_ad;
@@ -10,7 +17,28 @@ public class ReservationDTO {
 	private int gno;
 	private String id;
 	private String pay;
-	private String rname;
+	
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
+	
+	public String getPrice() {
+		return price == null ? "" : price.trim();
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getRimage() {
+		return rimage == null ? "" : rimage.trim();
+	}
+	public void setRimage(String rimage) {
+		this.rimage = rimage;
+	}
+
+	
 	
 	public String getPay() {
 		return pay == null ? "" : pay.trim();
@@ -38,7 +66,7 @@ public class ReservationDTO {
 		this.occupancy = occupancy;
 	}
 
-
+	
 	
 	public String getRname() {
 		return rname == null ? "" : rname.trim();
@@ -79,13 +107,5 @@ public class ReservationDTO {
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
-	@Override
-	public String toString() {
-		return "ReservationDTO [rsno=" + rsno + ", occupancy=" + occupancy + ", tot_ad=" + tot_ad + ", tot_ch=" + tot_ch
-				+ ", startdate=" + startdate + ", enddate=" + enddate + ", gno=" + gno + ", id=" + id + ", pay=" + pay
-				+ ", rname=" + rname + "]";
-	}
-	
-	
 	
 }

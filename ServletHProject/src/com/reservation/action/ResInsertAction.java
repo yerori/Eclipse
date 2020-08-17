@@ -1,4 +1,4 @@
-package com.guest.action;
+package com.reservation.action;
 
 import java.io.IOException;
 
@@ -14,9 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.guest.model.GuestDAOImpl;
+import com.reservation.model.ReservationDAOImpl;
 import com.reservation.model.ReservationDTO;
 
-@WebServlet("/reserve/reservation")
+@WebServlet("/reserve/resInsert")
 public class ResInsertAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -34,6 +35,8 @@ public class ResInsertAction extends HttpServlet {
 		int tot_ch=Integer.parseInt(request.getParameter("tot_ch"));
 		String startdate=request.getParameter("startDate");
 		String enddate=request.getParameter("endDate");
+		String rname=request.getParameter("rname");
+		String pay = request.getParameter("pay");
 	
 		try {	
 			
@@ -46,15 +49,14 @@ public class ResInsertAction extends HttpServlet {
 			
 										// (24*60*60*1000) : 각 시간값에 따른 차이점
 			long calDateDays = calDate / (24*60*60*1000);
-			occupancy = (int) Math.abs(calDateDays);		
-			System.out.println("occu:"+occupancy);
-			String rname=request.getParameter("rname");
-			
-			GuestDAOImpl dao = GuestDAOImpl.getInstance();
+			occupancy = (int) Math.abs(calDateDays);	
+		
+			ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
 			
 			ReservationDTO res = new ReservationDTO();
 			HttpSession session = request.getSession();
 			int gno = (Integer) session.getAttribute("gno");
+			String id = (String) session.getAttribute("id");
 
 			res.setGno(gno);
 			res.setOccupancy(occupancy);
@@ -63,20 +65,17 @@ public class ResInsertAction extends HttpServlet {
 			res.setStartdate(startdate);
 			res.setEnddate(enddate);
 			res.setRname(rname);
+			res.setId(id);
+			res.setPay(pay);
 			
-			dao.resInsert(res);
 			
-			response.sendRedirect("resForm.jsp");
+			int rsno = dao.resInsert(res);			
+			response.sendRedirect("resdetail?rsno="+rsno);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

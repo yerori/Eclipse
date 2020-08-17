@@ -31,30 +31,35 @@ public class AdContactDeleteAction extends HttpServlet {
 
 		int cnum = Integer.parseInt(request.getParameter("cnum")); //cnum이 유일한 값이니까
 		BoardDAOImpl dao=BoardDAOImpl.getInstance();
-		ComDTO content = dao.contactDetail(cnum);
-
-		ArrayList<ComDTO> arr= dao.contentList();
-		int count = dao.contactCount();
-		JSONObject mainObj = new JSONObject();
-		JSONArray jarr = new JSONArray();
-		for(ComDTO dto : arr) {
-			JSONObject obj = new JSONObject();
-			obj.put("cnum", dto.getCnum());
-			obj.put("content", dto.getContent());
-			obj.put("id", dto.getId());
-			obj.put("email", dto.getEmail());
-			obj.put("subject", dto.getSubject());
-			jarr.add(obj);
-		}
-		JSONObject countObj = new JSONObject();
-		countObj.put("count", count);
 		
-		mainObj.put("root", jarr);
-		mainObj.put("rootCount", countObj);
+		dao.contactDelete(cnum);
 		
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println(mainObj.toString());
+		response.sendRedirect("conlist");
+		
+//		int startRow=Integer.parseInt(request.getParameter("startRow"));
+//		int endRow=Integer.parseInt(request.getParameter("endRow"));
+//		ArrayList<ComDTO> arr= dao.contentList(startRow,endRow); //이거 안되면 그냥 contentList도 하나 만드기
+//		int count = dao.contactCount();
+//		JSONObject mainObj = new JSONObject();
+//		JSONArray jarr = new JSONArray();
+//		for(ComDTO dto : arr) {
+//			JSONObject obj = new JSONObject();
+//			obj.put("cnum", dto.getCnum());
+//			obj.put("content", dto.getContent());
+//			obj.put("id", dto.getId());
+//			obj.put("email", dto.getEmail());
+//			obj.put("subject", dto.getSubject());
+//			jarr.add(obj);
+//		}
+//		JSONObject countObj = new JSONObject();
+//		countObj.put("count", count);
+//		
+//		mainObj.put("root", jarr);
+//		mainObj.put("rootCount", countObj);
+//		
+//		response.setContentType("text/html;charset=utf-8");
+//		PrintWriter out = response.getWriter();
+//		out.println(mainObj.toString());
 		
 //		
 //		request.setAttribute("con", content);

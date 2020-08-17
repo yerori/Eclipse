@@ -1,4 +1,4 @@
-package com.reservation.action;
+package com.admin.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,30 +10,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.board.model.BoardDAOImpl;
+import com.board.model.ComDTO;
 import com.board.model.PageUtil;
-import com.guest.model.GuestDAOImpl;
-import com.reservation.model.ReservationDAOImpl;
-import com.reservation.model.RoomDTO;
 
-@WebServlet("/admin/roomlist")
-public class RoomListAction extends HttpServlet {
+@WebServlet("/admin/conlist1")
+public class AdConListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
-    public RoomListAction() {
+    public AdConListAction() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
+		BoardDAOImpl dao = BoardDAOImpl.getInstance();
+
+	
 		
 		String pageNum = request.getParameter("pageNum")==null?"1":request.getParameter("pageNum");
 		int currentPage = Integer.parseInt(pageNum);
 		int pageSize = 5;
 		int startRow=(currentPage-1)*pageSize+1;
 		int endRow = currentPage*pageSize;		
-		int count=dao.roomCount();
+		int count=dao.contactCount();
 		
 		int totPage = (count/pageSize)+(count%pageSize==0?0:1);
 		int pageBlock=3;
@@ -49,21 +49,21 @@ public class RoomListAction extends HttpServlet {
 		pu.setTotPage(totPage);
 	
 		
-		ArrayList<RoomDTO> arr = dao.roomList(startRow,endRow);	
+		
+		ArrayList<ComDTO> arr = null;
+		arr = dao.contentList();
 	
 		int rowNo = count - ((currentPage-1)*pageSize);
-		request.setAttribute("roomArr", arr);
+		request.setAttribute("conarr", arr);
 		request.setAttribute("count", count);
 		request.setAttribute("rowNo", rowNo);
 		request.setAttribute("pu", pu);
-		RequestDispatcher rd = request.getRequestDispatcher("adRoomResult.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("adContactList.jsp");
 		rd.forward(request, response);
-		
-		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				doGet(request, response);
+		doGet(request, response);
 	}
 
 }

@@ -53,7 +53,7 @@
                         <!-- logo -->
                         <div class="logomain">
                             <div class="logo">
-                               <a href="adindex.jsp"><img src="../hotel/assets/img/logo/logohilton.jpg" alt=""></a>
+                               <a href="../admin/adIndex.jsp"><img src="../hotel/assets/img/logo/logohilton.jpg" alt=""></a>
                             </div>
                         </div>
                     <div class="col-xl-8 col-lg-8">
@@ -63,11 +63,11 @@
                                 <nav>
                                     <ul id="navigation">                                                                                                                                     
                                         <li><a href="../hotel/hiltonindex.jsp">Home</a></li>
-                                        <li><a href="../hotel/about.html">About</a></li>
-                                        <li><a href="roomlist">Room 수정</a></li>
+                                        <li><a href="../hotel/about.jsp">About</a></li>
+                                        <li><a href="../admin/roomlist">Room 수정</a></li>
                                         <li><a href="../hotel/come.jsp">오시는 길</a></li>                                   
-                                        <li><a href="conlist">Contact 보기</a></li>  
-                                        <li><a href="../reserve/reservation.jsp">예약 확인</a></li>
+                                        <li><a href="../admin/conlist">Contact 보기</a></li>  
+                                        <li><a href="reslist">예약 확인</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -81,8 +81,8 @@
                              <a href="../hotel/login.jsp" class="btn btn1 d-none d-lg-block ">login</a>
                             </c:when>
                             
-                            <c:otherwise>
-                             <a href="logout" class="btn btn1 d-none d-lg-block ">logout</a> 
+                            <c:otherwise> <!-- 절대 경로!!! 폴더 달라도 같은 도착지로 갈수있게끔,, 주소창 복사,, -->
+                             <a href="/ServletHProject/hotel/logout" class="btn btn1 d-none d-lg-block ">logout</a> 
                              </c:otherwise>
                            </c:choose>
                             </div>                        

@@ -14,17 +14,11 @@
                       <div class="single-footer-caption mb-30">
                 
                          <div class="footer-logo">
-                           <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                           <a href="index.html"><img src="assets/img/room/logo2_footer.png" alt=""></a>
                          </div>
-                         <div class="footer-social footer-social2">
-                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                             <a href="#"><i class="fab fa-twitter"></i></a>
-                             <a href="#"><i class="fas fa-globe"></i></a>
-                             <a href="#"><i class="fab fa-behance"></i></a>
-                         </div>
+                  
                          <div class="footer-pera">
-                              <p>Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                              <p></script> All rights reserved
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.</p> -->
                          </div>
                       </div>
@@ -34,7 +28,7 @@
                            <div class="footer-tittle">
                                <h4>Quick Links</h4>
                                <ul>
-                                   <li><a href="#">About Mariana</a></li>
+                                   <li><a href="#">About Hilton</a></li>
                                    <li><a href="#">Our Room Condition</a></li>
                                    <li><a href="#">Contact</a></li>
                                    <li><a href="#">오시는 길</a></li>

@@ -11,20 +11,11 @@
 
 function delFunc(cnum){
 	if(confirm("정말 삭제할까요?")){
-		$.getJSON("delete?cnum="+cnum, function(data){
-			var htmlStr="";
-		$.each(data.root, function(key, val){
-			htmlStr+="<tr>";
-			htmlStr+="<td>"+val.id+"</td>";
-			htmlStr+="<td>"+val.subject+"</td>";
-			htmlStr+="<td>"+val.email+"</td>";
-			htmlStr+="<td>"+val.content+"</td>";
-			htmlStr+="</tr>";
-		})	
-		$("table tbody").html(htmlStr);		
-		})
+		alert("삭제되었습니다.");
+		location.href="condelete?cnum="+cnum;
 	}
 }
+
 </script>
 <style>
 .btn btn1 d-none d-lg-block{

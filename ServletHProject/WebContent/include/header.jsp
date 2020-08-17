@@ -63,11 +63,11 @@
                                 <nav>
                                     <ul id="navigation">                                                                                                                                     
                                         <li><a href="../hotel/hiltonindex.jsp">Home</a></li>
-                                        <li><a href="../hotel/about.html">About</a></li>
-                                        <li><a href="../hotel/services.html">Rooms</a></li>
+                                        <li><a href="../hotel/about.jsp">About</a></li>
+                                        <li><a href="../hotel/rooms.jsp">Rooms</a></li>
                                         <li><a href="../hotel/come.jsp">오시는 길</a></li>                                   
                                         <li><a href="../board/contact.jsp">Contact</a></li>  
-                                        <li><a href="../reserve/reservation.jsp">예약</a></li>
+                                        <li><a href="../hotel/roomsearch">예약</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -76,13 +76,13 @@
                         <div class="col-xl-2 col-lg-2">
                             <!-- header-btn -->
                             <div class="header-btn">
-                            <c:choose> <%-- <c:if>는 안되더라구요ㅠ --%>
+                            <c:choose> <%-- <c:if>는 안되더라구요ㅠ --%>                            
                             <c:when test="${empty sessionScope.id }">
                              <a href="../hotel/login.jsp" class="btn btn1 d-none d-lg-block ">login</a>
                             </c:when>
                             
                             <c:otherwise>
-                             <a href="logout" class="btn btn1 d-none d-lg-block ">logout</a> 
+                             <a href="/ServletHProject/hotel/logout" class="btn btn1 d-none d-lg-block ">logout</a> 
                              </c:otherwise>
                            </c:choose>
                             </div>                        

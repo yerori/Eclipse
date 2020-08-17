@@ -7,6 +7,7 @@ public class ComDTO {
 	private String subject;
 	private String id;
 	
+
 	public String getId() {
 		return id == null ? "" : id.trim();
 	}

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.reservation.model.ReservationDAOImpl;
 import com.reservation.model.RoomDTO;
 
-@WebServlet("/room/roomupdate")
+@WebServlet("/admin/roomupdate")
 public class RoomUpdateAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
@@ -31,8 +31,8 @@ public class RoomUpdateAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");		
 		
 		RoomDTO room = new RoomDTO();
-		room.setBaby(Integer.parseInt(request.getParameter("baby")));
-		room.setMen(Integer.parseInt(request.getParameter("men")));
+		room.setTot_ad(Integer.parseInt(request.getParameter("tot_ad")));
+		room.setTot_ch(Integer.parseInt(request.getParameter("tot_ch")));
 		room.setRno(Integer.parseInt(request.getParameter("rno")));
 		room.setPrice(request.getParameter("price"));
 		room.setRimage(request.getParameter("rimage"));

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adHeader.jsp" %>
@@ -11,20 +12,24 @@
 <script src = "https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <script>
+<script>
 $(document).ready(function(){
 	getData(1);
-
 })//document
-
 function getData(pageNum){
-	$.get("conlist",
+	$.get("roomlist",
 	  {"pageNum":pageNum},
 		 function(d){
 		   $("#result").html(d);
-	})
+		 })
 }
 
+
+
+
 </script>
+
+
 <style>
 #container{
 	margin:0 auto;
@@ -35,38 +40,55 @@ function getData(pageNum){
 #h4{
 	padding:20px;
 }
+#img{
+	width:200px;
+}
+
+#addBtn{
+	width:80px;
+}
 </style>
+
 <body>
+<form action="adRoomInsert.jsp">
 <input type="hidden" name="userid" value="${con.id}">
  <div id="container">
-  <h4 id="h4">작성된 글 : 총 <span id="cntSpan">${count }개</span></h4>
+  <h4 id="h4">존재하는 방 : 총 <span id="cntSpan">${count }개</span></h4>
   
 <table class="table table-striped">
 <thead class="thead-dark">
 
 	<tr>
-	<td>번호</td>
-	<td>제목</td>
-	<td>작성자</td>
-	<td>이메일</td>
-	<td>내용</td>
+	<th>방 번호</th>
+	<th>방 이름</th>
+	<th>최대 성인 수용 인원</th>
+	<th>최대 아기 수용 인원</th>
+	<th>가격</th>
+	<th>이미지</th>
 	</tr>
    </thead>
   <tbody>	
 	
 	
-  <c:forEach items="${conarr }" var="content">
+  <c:forEach items="${roomArr }" var="room">
   <tr>
-	<td>${content.cnum }</td>
-	<td><a href="condetail?cnum=${content.cnum}">${content.subject }</a></td>
-	<td>${content.id }</td>
-	<td>${content.email }</td>
-	<td>${content.content }</td>
+	<td>${room.rno }</td>
+	<td><a href="roomdetail?rno=${room.rno}">${room.rname }</a></td>
+	<td>${room.tot_ad }</td>
+	<td>${room.tot_ch }</td>
+	<td>${room.price }</td>
+	<td><img src="../hotel/assets/img/room/${room.rimage }" id="img"></td>
+	<td>
 	</tr>
-	</c:forEach></tbody>
+	</c:forEach>
+	<tr>
+	<td colspan="6" align="center">
+	 <a href="../admin/adRoomInsert.jsp" class="btn btn1 d-none d-lg-block " id="addBtn">추가하기</a>
+	</tr>
+	</tbody>	
 </table>
 </div>
-
+</form>
 <div align = "center" > <br>
 	  	<c:if test = "${pu.startPage>pu.pageBlock}"> <!-- 이전-->
 	  		<a href = "javascript:getData(${pu.startPage-pu.pageBlock})">[이전]</a>
@@ -82,8 +104,7 @@ function getData(pageNum){
 	  	<c:if test = "${pu.endPage < pu.totPage}"> <!-- 다음-->
 	  		<a href = "javascript:getData(${pu.endPage+1})">[다음]</a>
 	  	</c:if>
-	  </div> 
-
+	  </div>
 </body>
 </html>
 <%@ include file="adFooter.jsp" %>

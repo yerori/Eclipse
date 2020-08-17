@@ -3,10 +3,74 @@ package com.reservation.model;
 public class RoomDTO {
 	private int rno;
 	private String rname;
-	private int men;
-	private int baby;	
+	private int tot_ad;
+	private int tot_ch;
 	private String price;
 	private String rimage;
+	private String startdate;
+	private String enddate;	
+	private String pay;
+	private int rsno;
+	private int occupancy;
+	private int gno;
+	private String id;
+
+	
+	public String getStartdate() {
+		return startdate == null ? "" : startdate.trim();
+	}
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
+	public String getEnddate() {
+		return enddate == null ? "" : enddate.trim();
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+	public String getPay() {
+		return pay == null ? "" : pay.trim();
+	}
+	public void setPay(String pay) {
+		this.pay = pay;
+	}
+	public int getRsno() {
+		return rsno;
+	}
+	public void setRsno(int rsno) {
+		this.rsno = rsno;
+	}
+	public int getOccupancy() {
+		return occupancy;
+	}
+	public void setOccupancy(int occupancy) {
+		this.occupancy = occupancy;
+	}
+	public int getGno() {
+		return gno;
+	}
+	public void setGno(int gno) {
+		this.gno = gno;
+	}
+	public String getId() {
+		return id == null ? "" : id.trim();
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getTot_ad() {
+		return tot_ad;
+	}
+	public void setTot_ad(int tot_ad) {
+		this.tot_ad = tot_ad;
+	}
+	public int getTot_ch() {
+		return tot_ch;
+	}
+	public void setTot_ch(int tot_ch) {
+		this.tot_ch = tot_ch;
+	}
+
 	public int getRno() {
 		return rno;
 	}
@@ -19,18 +83,7 @@ public class RoomDTO {
 	public void setRname(String rname) {
 		this.rname = rname;
 	}
-	public int getMen() {
-		return men;
-	}
-	public void setMen(int men) {
-		this.men = men;
-	}
-	public int getBaby() {
-		return baby;
-	}
-	public void setBaby(int baby) {
-		this.baby = baby;
-	}
+
 	public String getPrice() {
 		return price == null ? "" : price.trim();
 	}

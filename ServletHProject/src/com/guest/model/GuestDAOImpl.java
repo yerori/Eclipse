@@ -62,10 +62,41 @@ public class GuestDAOImpl implements GuestDAO {
 		
 	}
 
+	//계정 list
 	public ArrayList<GuestDTO> guestList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+			Connection con = null;
+			Statement st = null;
+			ResultSet rs = null;
+			ArrayList<GuestDTO> arr = new ArrayList<GuestDTO>();
+			
+			try {
+				con=getConnection();
+				String sql="select * from member";
+				st=con.createStatement();
+				rs=st.executeQuery(sql);
+				
+				while(rs.next()) {
+					GuestDTO guest = new GuestDTO();
+					guest.setId(rs.getString("id"));
+					guest.setPwd(rs.getString("pwd"));
+					guest.setAddress(rs.getString("address"));
+					guest.setPhone(rs.getString("phone"));
+					guest.setEmail(rs.getString("email"));
+					guest.setGno(rs.getInt("gno"));
+					guest.setAdmin(rs.getInt("admin"));
+					
+					arr.add(guest);						
+				}
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConnection(con, st, rs);
+			}
+			return arr;
+		}
+	
 
 	public GuestDTO guestView(int num) {
 		// TODO Auto-generated method stub
@@ -115,7 +146,9 @@ public class GuestDAOImpl implements GuestDAO {
 			if(rs.next()) {
 				guest =new GuestDTO();
 				if(rs.getString("pwd").equals(pwd)) {
-					guest.setAdmin(rs.getInt("admin")); //회원이다
+					guest.setAdmin(rs.getInt("admin")); //관리자
+					guest.setId(rs.getString("id"));  //회원
+					guest.setGno(rs.getInt("gno")); //gno
 				}else {
 					guest.setAdmin(2); //회원인데 비밀번호 오류
 				}
@@ -162,35 +195,7 @@ public class GuestDAOImpl implements GuestDAO {
 	}
 	
 	
-	//예약 추가 
-			public void resInsert(ReservationDTO res) {
-				Connection con = null;
-				PreparedStatement ps = null;				
-				
-				try {
-					con=getConnection();
-					String sql = "insert into reservation "
-							+ "(reservation_seq.nextval,?,?,?,?,?,?,?,?)";
-					ps=con.prepareStatement(sql);
-					
-					ps.setInt(1, res.getRno());
-					ps.setInt(2, res.getOccupancy());
-					ps.setInt(3, res.getTot_ad());
-					ps.setInt(4, res.getTot_ch());
-					ps.setString(5, res.getStartdate());
-					ps.setString(6, res.getEnddate());
-					ps.setString(7, res.getRname());
-					ps.setInt(8, res.getGno());
-					ps.executeUpdate();
-					
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}finally {
-					closeConnection(con, ps);
-				}
-			}
-			
+	
 	
 	
 	//닫기	

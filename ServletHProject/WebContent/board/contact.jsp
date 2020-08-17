@@ -15,6 +15,13 @@
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 <script>
+// $(document).ready(function(){
+// 	$("#submit").on("click",function(){
+// 		location.href="coninsert";	
+// 	})
+		
+	
+// })
 
 </script>
 </head>
@@ -60,6 +67,7 @@
                     </div>
                     <div class="col-lg-8">
                         <form action="coninsert" class="form-contact contact_form"  id="contactForm" novalidate="novalidate">
+                        
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -83,7 +91,8 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn" id="submit">Send</button>
+
+                                <button type="submit" class="button button-contactForm boxed-btn" >Send</button> 
                             </div>
                         </form>
                     </div>
@@ -91,21 +100,21 @@
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
-                                <h3>Buttonwood, California.</h3>
-                                <p>Rosemead, CA 91770</p>
+                                <h3>Busan, Korea</h3>
+                                <p>Gijanggoon</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                             <div class="media-body">
-                                <h3>+1 253 565 2365</h3>
+                                <h3>+082 253 565 2365</h3>
                                 <p>Mon to Fri 9am to 6pm</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-email"></i></span>
                             <div class="media-body">
-                                <h3>support@colorlib.com</h3>
+                                <h3>support@hilton.com</h3>
                                 <p>Send us your query anytime!</p>
                             </div>
                         </div>

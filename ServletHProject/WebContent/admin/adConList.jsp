@@ -7,12 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<style>
-#result{
-	padding:30px;
-}
-
-</style>
 <script>
 $(document).ready(function(){
 	getData(1);
@@ -20,7 +14,7 @@ $(document).ready(function(){
 })//document
 
 function getData(pageNum){
-	$.get("roomlist",
+	$.get("conlist",
 	  {"pageNum":pageNum},
 		 function(d){
 		   $("#result").html(d);

@@ -41,7 +41,7 @@ public class BoardDAOImpl {
 			ps.setString(2, dto.getId());
 			ps.setString(3, dto.getEmail());
 			ps.setString(4, dto.getSubject());
-			System.out.println(sql);
+
 			
 			 flag=ps.executeUpdate();
 			if(flag ==1) {
@@ -84,7 +84,6 @@ public class BoardDAOImpl {
 				dto.setSubject(rs.getString("subject"));
 				dto.setCnum(rs.getInt("cnum"));
 				
-				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -110,6 +109,7 @@ public class BoardDAOImpl {
 			ps.setString(3, com.getEmail());
 			ps.setString(4, com.getSubject());
 			ps.setInt(5, com.getCnum());
+	
 			ps.executeUpdate();
 			
 		} catch (Exception e) {
@@ -120,28 +120,30 @@ public class BoardDAOImpl {
 		}
 	}
 	
+	//contact 전체보기 
 	
-	//contact 전체보기
 	public ArrayList<ComDTO> contentList(){
 		Connection con = null;
-		Statement st = null;
+		Statement st  = null;
 		ResultSet rs = null;
 		ArrayList<ComDTO> arr= new ArrayList<ComDTO>();
+	
 		
 		try {
 			con=getConnection();
 			String sql = "select * from contact";
-			st=con.createStatement();
+		
+			st=con.createStatement();			
 			rs=st.executeQuery(sql);
-			
+		
 			while(rs.next()) {
-				ComDTO com = new ComDTO();
-				com.setCnum(rs.getInt("cnum"));
-				com.setContent(rs.getString("content"));
-				com.setEmail(rs.getString("email"));
-				com.setId(rs.getString("id"));
-				com.setSubject(rs.getString("subject"));
-				arr.add(com);
+				ComDTO dto = new ComDTO();
+				dto.setCnum(rs.getInt("cnum"));
+				dto.setContent(rs.getString("content"));
+				dto.setEmail(rs.getString("email"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setId(rs.getString("id"));
+				arr.add(dto);
 				
 			}
 		} catch (Exception e) {
@@ -149,6 +151,48 @@ public class BoardDAOImpl {
 			e.printStackTrace();
 		}finally {
 			closeConnection(con, st, rs);
+		}
+		return arr;
+	}
+	
+	
+	
+	
+	//contact 전체보기 (개수)
+	public ArrayList<ComDTO> contentList(int startRow, int endRow){
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ArrayList<ComDTO> arr= new ArrayList<ComDTO>();
+	
+		
+		try {
+			con=getConnection();
+			String sql = "select * from(select rownum rn,aa.* "
+					+ "from(select * from contact order by cnum desc)aa) "
+					+ "where rn<=? and rn>=?";		//as
+		
+			ps=con.prepareStatement(sql);
+			ps.setInt(1,  endRow);
+			ps.setInt(2, startRow);
+			
+			rs=ps.executeQuery();
+		
+			while(rs.next()) {
+				ComDTO dto = new ComDTO();
+				dto.setCnum(rs.getInt("cnum"));
+				dto.setContent(rs.getString("content"));
+				dto.setEmail(rs.getString("email"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setId(rs.getString("id"));
+				arr.add(dto);
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConnection(con, ps, rs);
 		}
 		return arr;
 	}

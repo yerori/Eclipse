@@ -43,7 +43,7 @@
 			});//id_checkBtn 
 
 			$("#zipcode_chk").on("click",function() {
-				window.open("/HOTEL/ZIP/jusoPopup.jsp", "",
+				window.open("../ZIP/jusoPopup.jsp", "",
      				"width=500 height=400");
 				})
 			}); //document 

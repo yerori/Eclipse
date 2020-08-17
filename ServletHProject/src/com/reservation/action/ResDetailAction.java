@@ -1,6 +1,7 @@
 package com.reservation.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,41 +9,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.guest.model.GuestDAOImpl;
 import com.reservation.model.ReservationDAOImpl;
-import com.reservation.model.RoomDTO;
+import com.reservation.model.ReservationDTO;
 
-
-@WebServlet("/admin/roominsert")
-public class RoomInsertAction extends HttpServlet {
+@WebServlet("/reserve/resdetail")
+public class ResDetailAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
-    public RoomInsertAction() {
+
+    public ResDetailAction() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("adRoomInsert.jsp");
+		request.setCharacterEncoding("utf-8");
+		ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
+		int rsno = Integer.parseInt(request.getParameter("rsno"));
+		
+		ReservationDTO arr= dao.resDetail(rsno);
+		
+		
+		request.setAttribute("resArr", arr);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("reservationDetail.jsp");
 		rd.forward(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getParameter("utf-8");
-		
-		RoomDTO room = new RoomDTO();
-		room.setRname(request.getParameter("rname"));
-		room.setTot_ad(Integer.parseInt(request.getParameter("tot_ad")));
-		room.setTot_ch(Integer.parseInt(request.getParameter("tot_ch")));
-		room.setPrice(request.getParameter("price"));
-		room.setRimage(request.getParameter("rimage"));
-
-		ReservationDAOImpl dao = ReservationDAOImpl.getInstance();
-		dao.roomInsert(room);
-		response.sendRedirect("roomlist");
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
