@@ -46,6 +46,10 @@
 				window.open("../ZIP/jusoPopup.jsp", "",
      				"width=500 height=400");
 				})
+			$("#send").on("click",function(){
+				alert("회원가입을 축하합니다. 로그인 창으로 이동합니다.");
+				location.href="login.jsp";
+			})
 			}); //document 
 			
 		

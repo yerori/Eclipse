@@ -86,10 +86,9 @@ margin:0 auto;
  </tr>
  
  <tr>
- <th>지불 가격</th>
+ <th>지불 방법</th>
  <td>${resArr.pay }</td>
  </tr>
- 
 
 
 <tr>

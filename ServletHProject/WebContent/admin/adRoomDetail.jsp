@@ -115,7 +115,7 @@ margin:0 auto;
  
   <tr>
   <th>이미지</th>
- <td><input type="file" id="rimage" name="rimage" id="img"></td>
+ <td><img src="../hotel/assets/img/room/${room.rimage }" id="img"></br><input type="file" id="rimage" name="rimage" id="img"></td>
  </tr>
 <tr>
 <td colspan="2" align="center">

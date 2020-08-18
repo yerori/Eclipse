@@ -66,8 +66,16 @@
                                         <li><a href="../hotel/about.jsp">About</a></li>
                                         <li><a href="../hotel/rooms.jsp">Rooms</a></li>
                                         <li><a href="../hotel/come.jsp">오시는 길</a></li>                                   
-                                        <li><a href="../board/contact.jsp">Contact</a></li>  
-                                        <li><a href="../hotel/roomsearch">예약</a></li>
+                                        <li><a href="../board/contact.jsp">Contact</a></li>
+                                        <c:choose> <%-- <c:if>는 안되더라구요ㅠ --%>                            
+                          				  <c:when test="${empty sessionScope.id }">
+                             			
+                            			  </c:when>
+                            
+			                            <c:otherwise>
+            			                    <li><a href="../hotel/roomsearch">예약</a></li>
+                        			     </c:otherwise>
+                          				 </c:choose>
                                     </ul>
                                 </nav>
                             </div>

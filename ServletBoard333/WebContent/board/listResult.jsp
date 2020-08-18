@@ -40,18 +40,18 @@
 	  </table>
 	  <div align = "center">
 	  	<c:if test = "${pu.startPage>pu.pageBlock}"> <!-- 이전-->
-	  		<a href = "javascript:getData(${pu.startPage-pu.pageBlock},'${pu.field}','${pu.word}')">[이전]</a>
+	  		<a href = "javascript:getData(${pu.startPage-pu.pageBlock})">[이전]</a>
 	  	</c:if>
 	  	<c:forEach begin ="${pu.startPage}" end = "${pu.endPage}" var = "i"> <!-- 이전-->
   			<c:if test ="${i==pu.currentPage}"> <!-- 현재페이지-->
  				<c:out value = "${i}"/>
   			</c:if>
   			<c:if test = "${i!=pu.currentPage}"> <!-- 현재페이지 아닌 경우 링크 부여-->
-  				<a href = "javascript:getData(${i},'${pu.field}','${pu.word}')">${i}</a>
+  				<a href = "javascript:getData(${i})">${i}</a>
   			</c:if>
 	  	</c:forEach>
 	  	<c:if test = "${pu.endPage < pu.totPage}"> <!-- 다음-->
-	  		<a href = "javascript:getData(${pu.endPage+1},'${pu.field}','${pu.word}')">[다음]</a>
+	  		<a href = "javascript:getData(${pu.endPage+1})">[다음]</a>
 	  	</c:if>
 	  </div> 
 	  </div>

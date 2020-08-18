@@ -19,26 +19,24 @@
 </style>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-    	   $("#resBtn").click(function(){
-//     		   if(${sessionScope.login==null}){
-//           			alert("로그인 해주세요.");
-//           			location.href="../hotel/login.jsp";
-//           			return false;
-//           		}
-        	
-        	   if($("#startDate").val()==""){
-        		   alert("체크인 날짜를 선택해주세요");
-        		   return false;
-        	   }
-        	   if($("#endDate").val()==""){
-        		   alert("체크아웃 날짜를 선택해주세요");
-        		   return false;
-        	   }
-        	 
-        	   $("#frm").submit();
-           }) 
-           
+
+$(document).ready(function () {
+	   $("#resBtn").click(function(){
+
+ 	
+ 	   if($("#startDate").val()==""){
+ 		   alert("체크인 날짜를 선택해주세요");
+ 		   return false;
+ 	   }
+ 	   if($("#endDate").val()==""){
+ 		   alert("체크아웃 날짜를 선택해주세요");
+ 		   return false;
+ 	   }
+	  
+ 		
+ 	   $("#frm").submit();
+    })            
+  
            
     	$.get()
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
@@ -80,8 +78,7 @@
                 	  $("#endDate").datepicker( "option", "minDate", selectedDate );
                  }     
             });  
-            
-          
+     		
     });
 </script>
 

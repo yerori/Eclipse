@@ -56,7 +56,7 @@ public class RoomListAction extends HttpServlet {
 		request.setAttribute("count", count);
 		request.setAttribute("rowNo", rowNo);
 		request.setAttribute("pu", pu);
-		RequestDispatcher rd = request.getRequestDispatcher("adRoomResult.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("adRoomList.jsp");
 		rd.forward(request, response);
 		
 		

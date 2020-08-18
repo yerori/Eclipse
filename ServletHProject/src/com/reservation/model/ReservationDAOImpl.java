@@ -152,7 +152,8 @@ public class ReservationDAOImpl {
 					
 					try {
 						con=getConnection();
-						String sql="select TO_CHAR(enddate,'YYYY-MM-DD'),rsno,occupancy,tot_ad,tot_ch,TO_CHAR(startdate,'YYYY-MM-DD'),rname,gno,id,pay from reservation";
+						String sql="select TO_CHAR(enddate,'YYYY-MM-DD'),rsno,occupancy,tot_ad,tot_ch,TO_CHAR(startdate,'YYYY-MM-DD'),rname,gno,id,pay "
+								+ "from reservation order by rsno desc";
 						st=con.createStatement();
 						rs=st.executeQuery(sql);
 						
@@ -446,7 +447,7 @@ public class ReservationDAOImpl {
 					
 			try {
 				con=getConnection();
-				String sql="select * from reservation rs, room r where rs.rname = r.rname";
+				String sql="select * from reservation rs, room r where rs.rname = r.rname order by rsno desc";
 				st=con.createStatement();
 				rs=st.executeQuery(sql);
 						

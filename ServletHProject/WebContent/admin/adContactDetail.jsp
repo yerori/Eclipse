@@ -84,6 +84,9 @@ margin:0 auto;
 </tbody>
 </table>
 </div>
+<div id="comResult"></div>
+
+
 
 </body>
 </html>

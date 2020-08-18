@@ -38,6 +38,7 @@ public class BoardListAction extends HttpServlet {
 		String pageNum = request.getParameter("pageNum")==null?"1":request.getParameter("pageNum");
 		String field = request.getParameter("field")==null?"":request.getParameter("field");
 		String word = request.getParameter("word")==null?"":request.getParameter("word");
+		
 		int currentPage = Integer.parseInt(pageNum);
 		int pageSize = 5;
 		int startRow = (currentPage-1)*pageSize+1;

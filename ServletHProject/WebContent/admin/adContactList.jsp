@@ -11,18 +11,7 @@
 <script src = "https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <script>
-$(document).ready(function(){
-	getData(1);
 
-})//document
-
-function getData(pageNum){
-	$.get("conlist",
-	  {"pageNum":pageNum},
-		 function(d){
-		   $("#result").html(d);
-	})
-}
 
 </script>
 <style>
@@ -69,21 +58,21 @@ function getData(pageNum){
 
 <div align = "center" > <br>
 	  	<c:if test = "${pu.startPage>pu.pageBlock}"> <!-- 이전-->
-	  		<a href = "javascript:getData(${pu.startPage-pu.pageBlock})">[이전]</a>
+	  		<a href = "conlist?pageNum=${pu.startPage-pu.pageBlock}">[이전]</a>
 	  	</c:if>
 	  	<c:forEach begin ="${pu.startPage}" end = "${pu.endPage}" var = "i"> <!-- 이전-->
   			<c:if test ="${i==pu.currentPage}"> <!-- 현재페이지-->
  				<c:out value = "${i}"/>
   			</c:if>
   			<c:if test = "${i!=pu.currentPage}"> <!-- 현재페이지 아닌 경우 링크 부여-->
-  				<a href = "javascript:getData(${i})">${i}</a>
+  				<a href = "conlist?pageNum=${i}">${i}</a>
   			</c:if>
 	  	</c:forEach>
 	  	<c:if test = "${pu.endPage < pu.totPage}"> <!-- 다음-->
-	  		<a href = "javascript:getData(${pu.endPage+1})">[다음]</a>
+	  		<a href = "conlist?pageNum=${pu.endPage+1}">[다음]</a>
 	  	</c:if>
 	  </div> 
-
+<div id="result"></div>
 </body>
 </html>
 <%@ include file="adFooter.jsp" %>
