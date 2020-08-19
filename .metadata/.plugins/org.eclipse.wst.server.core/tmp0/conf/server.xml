@@ -286,7 +286,7 @@
     <!--
     <Manager pathname="" />
     -->
-</Context></Host>
+</Context><Context docBase="C:\Users\admin\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\0_AddressMybatis" path="/0_AddressMybatis" reloadable="true" source="org.eclipse.jst.jee.server:0_AddressMybatis"/></Host>
     </Engine>
   </Service>
 </Server>

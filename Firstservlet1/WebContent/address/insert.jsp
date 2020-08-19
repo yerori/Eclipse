@@ -42,6 +42,7 @@ $(document).ready(function(){
 	<input type="button" name="zipcodre" value="검색" id="zipBtn" >
 </td></tr>
 
+
 <tr>
 	<td>주소</td> 
 	<td><input type="text" name="addr" size=30 id="addr"></td>

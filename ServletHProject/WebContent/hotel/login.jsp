@@ -43,7 +43,6 @@ $(document).ready(function(){
 			 location.href="hiltonindex.jsp";
 		 }else if(value.trim()==2){
 			 alert("비밀번호를 확인하세요");
-			 $("#pwd").focus();
 		 }else if(value.trim()==1){
 			 alert("관리자님 안녕하세요.");
 			 location.href="../admin/adIndex.jsp";

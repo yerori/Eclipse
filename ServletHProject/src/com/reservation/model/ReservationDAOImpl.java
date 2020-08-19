@@ -363,9 +363,7 @@ public class ReservationDAOImpl {
 			
 		}
 		
-		//방 검색
-	
-		
+				
 		//방 개수 		
 		public int roomCount() {
 			Connection con = null;
@@ -390,53 +388,6 @@ public class ReservationDAOImpl {
 			return count;		
 		}
 	
-		//admin 페이징 리스트
-				public ArrayList<AdminDTO> adminList (int startRow, int endRow){
-					Connection con = null;
-					PreparedStatement ps = null;
-					ResultSet rs = null;
-					ArrayList<AdminDTO> arr = new ArrayList<AdminDTO>();
-							
-					try {
-						con=getConnection();
-						//String sql="select * from reservation rs, room r where rs.rname = r.rname";
-						String sql = "select * from(select rownum rn,aa.* "
-								+ "from(select * from reservation rs, room r order by cnum desc)aa) "
-								+ "where rn<=? and rn>=?";
-						ps=con.prepareStatement(sql);
-						ps.setInt(1, endRow);
-						ps.setInt(2, startRow);
-						
-						rs=ps.executeQuery();
-						
-								
-						while(rs.next()) {
-							AdminDTO ad = new AdminDTO();
-							ad.setEnddate(rs.getString("enddate").substring(0,11));
-							ad.setGno(rs.getInt("gno"));
-							ad.setId(rs.getString("id"));
-							ad.setRno(rs.getInt("rno"));
-							ad.setRname(rs.getString("rname"));
-							ad.setTot_ad(rs.getInt("tot_ad"));
-							ad.setTot_ch(rs.getInt("tot_ch"));
-							ad.setPrice(rs.getString("price"));
-							ad.setRimage(rs.getString("rimage"));
-							ad.setOccupancy(rs.getInt("occupancy"));
-							ad.setRsno(rs.getInt("rsno"));
-							ad.setPay(rs.getString("pay"));
-							ad.setStartdate(rs.getString("startdate").substring(0,11));
-									
-							arr.add(ad);						
-						}						
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						closeConnection(con, ps, rs);
-					}
-					return arr;
-				}
-				
 	
 		//admin 리스트 보기 
 		public ArrayList<AdminDTO> adminList (){
@@ -478,6 +429,55 @@ public class ReservationDAOImpl {
 			return arr;
 		}
 		
+		
+		//페이징 예약 리스트 조회
+		public ArrayList<AdminDTO> adminList (int startRow, int endRow){
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			ArrayList<AdminDTO> arr = new ArrayList<AdminDTO>();
+					
+			try {
+				con=getConnection();
+			//	String sql="select * from(select rownum rn,aa.* "
+				//		+ "from(select * from room order by rno desc)aa) "
+					//	+ "where rn<=? and rn>=?";
+			//	String sql="select * from reservation rs, room r where rs.rname = r.rname order by rsno desc";
+				String sql="select * from(select rownum rn,aa.* "
+						+ "from(select * from reservation, room order by rsno desc)aa) "
+						+ "where rn<=? and rn>=?";
+				ps=con.prepareStatement(sql);
+				ps.setInt(1, endRow);
+				ps.setInt(2, startRow);
+			
+				rs=ps.executeQuery(sql);
+						
+				while(rs.next()) {
+					AdminDTO ad = new AdminDTO();
+					ad.setEnddate(rs.getString("enddate").substring(0,11));
+					ad.setGno(rs.getInt("gno"));
+					ad.setId(rs.getString("id"));
+					ad.setRno(rs.getInt("rno"));
+					ad.setRname(rs.getString("rname"));
+					ad.setTot_ad(rs.getInt("tot_ad"));
+					ad.setTot_ch(rs.getInt("tot_ch"));
+					ad.setPrice(rs.getString("price"));
+					ad.setRimage(rs.getString("rimage"));
+					ad.setOccupancy(rs.getInt("occupancy"));
+					ad.setRsno(rs.getInt("rsno"));
+					ad.setPay(rs.getString("pay"));
+					ad.setStartdate(rs.getString("startdate").substring(0,11));
+							
+					arr.add(ad);						
+				}						
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConnection(con, ps, rs);
+			}
+			return arr;
+		}
 		
 		//admin 리스트 삭제하기
 		public void adminDelete(int rsno) {

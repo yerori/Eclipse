@@ -53,8 +53,7 @@ public class GuestLoginAction extends HttpServlet {
 		
 		GuestDTO guest=dao.guestLoginChk(id, pwd);
 		HttpSession se = request.getSession();
-		
-		System.out.println(guest.getId());
+		System.out.println("admin"+guest.getAdmin());
 		if(guest.getAdmin()==0 ||guest.getAdmin()==1) {
 			se.setAttribute("id", guest.getId());
 			se.setAttribute("gno", guest.getGno());

@@ -82,6 +82,7 @@ function dels(no){
 </tr>
  
 <tr>
+
 <td colspan="2"><input type="submit" value="수정">
 <input type="button" value="삭제" onclick="del()">
 <input type="button" value="매개변수 삭제" onclick="dels(<%=num%>)">

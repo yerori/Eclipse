@@ -102,8 +102,27 @@ function delFunc(rsno){
 </table>
 </div>
 
+<div align = "center">
+	<c:if test = "${pu.startPage > pu.pageBlock }">
+		<a href="reslist?pageNum="${pu.startPage-pu.pageBlock }">[이전]</a>
+	</c:if>
+	
+	<c:forEach begin = "${pu.startPage }" end = "${pu.endPage }" var = "i">
+		<c:if test="${i==pu.currentPage }">
+			<c:out value="${i }"/>
+		</c:if>
+		<c:if test = "${i!=pu.currentPage }">
+			<a href="reslist?pageNum="${i }">${i }</a>
+		
+		</c:if>
+	</c:forEach>
+	<c:if test="${pu.endPage<pu.totPage }">
+		<a href="reslist?pageNum=${pu.endPage+1 }">[다음]</a>
+	</c:if>
+</div>
+
 </form>
-<div id="paging"></div>
+
 </body>
 </html>
 <%@ include file="adFooter.jsp" %>

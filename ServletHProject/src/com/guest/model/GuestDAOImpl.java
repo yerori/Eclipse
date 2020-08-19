@@ -130,28 +130,30 @@ public class GuestDAOImpl implements GuestDAO {
 	}
 	
 	//로그인 체크
-	//회원 아님 : -1   회원 : 1   회원이지만, 비번 오류 : 0
+	
 	public GuestDTO guestLoginChk(String id, String pwd) {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;
-	
-		GuestDTO guest = null; //회원이 아닐 시
+		GuestDTO guest =new GuestDTO(); 
 		
 		try {
 			con=getConnection();
 			String sql="select * from member where id='"+id+"'";
 			st=con.createStatement();
 			rs=st.executeQuery(sql);
-			if(rs.next()) {
-				guest =new GuestDTO();
+			if(rs.next()) { //회원일 시
+				
 				if(rs.getString("pwd").equals(pwd)) {
 					guest.setAdmin(rs.getInt("admin")); //관리자
 					guest.setId(rs.getString("id"));  //회원
 					guest.setGno(rs.getInt("gno")); //gno
-				}else {
+				}else if (rs.getString("pwd")!=pwd){
 					guest.setAdmin(2); //회원인데 비밀번호 오류
 				}
+				
+			}else { //회원이 아닐 시 
+				guest.setAdmin(-1);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

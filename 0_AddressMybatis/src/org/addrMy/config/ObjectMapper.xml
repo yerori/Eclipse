@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+ <mapper namespace="org.addrMy.config.ObjectMapper">  <!-- 현재 파일 적어줘~~ -->
+ 
+ <!-- insert -->
+ <insert id="insertData" parameterType="org.addrMy.model.AddressVO">
+   insert into address(num,name,zipcode,addr,tel) <!-- ?대신 #{}쓰기  -->
+   values(address_seq.nextval,#{name},#{zipcode},#{addr},#{tel}) <!-- xml파일엔 끝에 ; 안해두됑 --> 
+ </insert>
+ 
+ <!-- all select / 헐대박 select가 list문이래 ,, / return값이 있으니 parameter가 아닌 return type
+ -->
+ <select id="listData" resultType="org.addrMy.model.AddressVO">
+  select * from address order by num desc
+ </select>
+ 
+ <select id="countData" resultType="int"> 
+  select count(*) from address
+ </select>
+ 
+ </mapper>
