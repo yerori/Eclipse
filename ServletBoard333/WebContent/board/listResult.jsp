@@ -21,7 +21,7 @@
 	    </thead>
 	    <tbody>
 	      <c:forEach items="${tbl_board}" var="board" varStatus = "st">
-	       	<tr>
+	       	<tr> 
 	       		<td>${rowNo-st.index}</td>
 	       		<td>${board.num}</td>
 	      		<td>${board.writer}</td>

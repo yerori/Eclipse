@@ -1,7 +1,6 @@
 package org.addrMy.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,35 +15,38 @@ import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-@WebServlet("/address_my/listAction.amy")
-public class ListAction extends HttpServlet {
+@WebServlet("/address_my/updateAction.amy")
+public class UpdateAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public ListAction() {
+       
+    public UpdateAction() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		SqlSessionFactory sqlMapper = MybatisManager.getSqlMapper();
-		SqlSession sqlSession = sqlMapper.openSession(ExecutorType.REUSE);
-		
-		//반환형 				= sqlSession.selectList("listData");
-		List<AddressVO> arr = sqlSession.selectList("listData");
-		//int count = (Integer)sqlSession.selectOne("countData"); //selectOne은 리턴형이 object, (Integer)땜시 objectMapper에서 resultType=int 가넝한
-		int count = (Integer)sqlSession.selectOne("countSearchData");
-		
-		
-		request.setAttribute("arr", arr);
-		request.setAttribute("count", count);
-		RequestDispatcher rd = request.getRequestDispatcher("addrList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("addrView.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		
+		AddressVO avo = new AddressVO();
+		
+		avo.setAddr(request.getParameter("addr"));
+		avo.setName(request.getParameter("name"));
+		avo.setNum(Integer.parseInt(request.getParameter("num")));
+		avo.setTel(request.getParameter("tel"));
+		avo.setZipcode(request.getParameter("zipcode"));
+		
+		SqlSessionFactory sqlMapper = MybatisManager.getSqlMapper();
+		SqlSession sqlSession = sqlMapper.openSession(ExecutorType.REUSE);
+		
+		sqlSession.update("updateData",avo);
+		sqlSession.commit();
+		
+		response.sendRedirect("listAction.amy");
 	}
 
 }

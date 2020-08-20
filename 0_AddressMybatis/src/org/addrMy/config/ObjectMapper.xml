@@ -5,10 +5,23 @@
  
  <mapper namespace="org.addrMy.config.ObjectMapper">  <!-- 현재 파일 적어줘~~ -->
  
+ <sql id="search">
+  <where> <!-- where절 내에서는, jsp처럼 사용가능, where 조건에 해당안되도, sql문 실행ㄱ ㅏ넝 -->
+  	<if test="word!=null and field=='name'"> 
+  	 name like '%${word}%'
+<!--   	  name like '%'||#{word}||'%' -->
+  	</if>
+  	<if test="word!=null and field =='tel'">
+  	  tel like '%'||#{word}||'%'
+  	</if>
+  </where>
+ </sql>
+ 
  <!-- insert -->
  <insert id="insertData" parameterType="org.addrMy.model.AddressVO">
    insert into address(num,name,zipcode,addr,tel) <!-- ?대신 #{}쓰기  -->
    values(address_seq.nextval,#{name},#{zipcode},#{addr},#{tel}) <!-- xml파일엔 끝에 ; 안해두됑 --> 
+   							<!-- #{name} = 'name'  -->
  </insert>
  
  <!-- all select / 헐대박 select가 list문이래 ,, / return값이 있으니 parameter가 아닌 return type
@@ -17,8 +30,41 @@
   select * from address order by num desc
  </select>
  
- <select id="countData" resultType="int"> 
+ <select id="countData" resultType="int"> <!-- (Integer)sqlSession.selectOne("countData"); -->
   select count(*) from address
+ </select>
+ 
+ <!-- 검색카운트 -->
+ <select id="countSearchData" resultType="int" parameterType="java.util.Map" > 
+  select count(*) from address
+ <include refid="search"/> 
+ </select>
+ 
+ 
+ <!-- 상세보기는 parameter, 반환값 둘다 필요하니까  -->
+ <select id="viewData" parameterType="int" resultType="org.addrMy.model.AddressVO">
+   select * from address where num=#{num} 
+ </select>
+ 
+ <update id="updateData" parameterType="org.addrMy.model.AddressVO">
+  update address set zipcode=#{zipcode}, name=#{name}, addr=#{addr}, tel=#{tel} where num=#{num}
+ </update>
+ 
+ <delete id="deleteData" parameterType="int" >
+   delete from address where num=#{num} 
+ </delete>
+ 
+ <select id="zipData" parameterType="String" resultType="zipvo"> <!-- Configuration.xml에 별칭을 zipvo라 정해놓음 -->
+   select * from zipcode where dong like '%'||#{dong}||'%'    <!-- ||는 즉, +와 같음  -->
+
+ </select>
+ 
+ <!-- 검색 -->						  
+ <!--해쉬맵 사용했으니까  -->
+ <select id="searchData" parameterType="java.util.Map" resultType="org.addrMy.model.AddressVO">
+ 	select * from address 
+ <include refid="search"/>
+ 
  </select>
  
  </mapper>

@@ -9,7 +9,7 @@
 <script>
 $(document).ready(function(){
 	$("#zipBtn").on("click",function(){
-	window.open("zip.do","","width=700 height=400");	
+	window.open("zipAction.amy","","width=700 height=400");	
 	})
 })		
 

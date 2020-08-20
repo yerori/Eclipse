@@ -1,7 +1,6 @@
 package org.addrMy.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,11 +15,11 @@ import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-@WebServlet("/address_my/listAction.amy")
-public class ListAction extends HttpServlet {
+@WebServlet("/address_my/viewAction.amy")
+public class ViewAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ListAction() {
+    public ViewAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,17 +28,16 @@ public class ListAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		SqlSessionFactory sqlMapper = MybatisManager.getSqlMapper();
 		SqlSession sqlSession = sqlMapper.openSession(ExecutorType.REUSE);
+				
+		int num= Integer.parseInt(request.getParameter("num"));
 		
-		//반환형 				= sqlSession.selectList("listData");
-		List<AddressVO> arr = sqlSession.selectList("listData");
-		//int count = (Integer)sqlSession.selectOne("countData"); //selectOne은 리턴형이 object, (Integer)땜시 objectMapper에서 resultType=int 가넝한
-		int count = (Integer)sqlSession.selectOne("countSearchData");
+		AddressVO avo = sqlSession.selectOne("viewData", num); //하나의 객체만 보여주니까 select가 아닌 selectOne
 		
+		request.setAttribute("address", avo);
 		
-		request.setAttribute("arr", arr);
-		request.setAttribute("count", count);
-		RequestDispatcher rd = request.getRequestDispatcher("addrList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("addrView.jsp");
 		rd.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
