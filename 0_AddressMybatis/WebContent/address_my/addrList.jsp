@@ -17,22 +17,29 @@ $(document).ready(function(){
 		$.getJSON("searchAction.amy",
 			{"field":$("#field").val(), "word":$("#word").val()},
 			  function(data){
-				$("#count").html("검색된 총 게시물 수 : "+data.count); //검색한 data 개수
-				var htmlStr ="";
-				$.each(data.arr, function(key,val){ //val을 value로 하면 X 
-					htmlStr+="<tr>";
-					htmlStr+="<td>순서</td>";
-					htmlStr+="<td>"+val.num+"</td>";
-					htmlStr+="<td>"+val.name+"</td>";
-					htmlStr+="<td>"+val.addr+"</td>";
-					htmlStr+="<td>"+val.tel+"</td>";
-					htmlStr+="</tr>";
-				})
-				$("table tbody").html(htmlStr);
-				
+				fsuccess(data);		
 			} //func
 		) //json
 	}) //btn	
+	
+	fsuccess = function(data){ //중복되는 코드 빼기 
+		$("#count").html("검색된 총 게시물 수 : "+data.count); //검색한 data 개수
+		var htmlStr ="";
+		$.each(data.arr, function(key,val){ //val을 value로 하면 X 
+			htmlStr+="<tr>";
+			htmlStr+="<td>순서</td>";
+			htmlStr+="<td>"+val.num+"</td>";
+			htmlStr+="<td>"+val.name+"</td>";
+			htmlStr+="<td>"+val.addr+"</td>";
+			htmlStr+="<td>"+val.tel+"</td>";
+			htmlStr+="<td onclick='fdelete("+val.num+")'>삭제</td>"; 
+			//""가 원래 없던 문장이었는데 , ""를 덮어씌울 때는 ''을 하기  
+//			<td onclick="fdelete(${address.num})">삭제</td>
+//	$.post("test.php", $("#testform").serialize() -> serialize : submit같이 값 다 들고감)
+			htmlStr+="</tr>";
+		})
+		$("table tbody").html(htmlStr);
+	}	
 })//doc
 
 
@@ -41,21 +48,9 @@ function fdelete(num){
 	if(confirm("삭제하시겠습니까?")){
 		$.getJSON("deleteAjaxAction.amy?num="+num,
 		  function(data){
-			$("#count").html("검색된 총 게시물 수 : "+data.count); //검색한 data 개수
-			 var htmlStr ="";
-			  $.each(data.arr, function(key,val){ //val을 value로 하면 X 
-				htmlStr+="<tr>";
-				htmlStr+="<td>순서</td>";
-				htmlStr+="<td>"+val.num+"</td>";
-				htmlStr+="<td>"+val.name+"</td>";
-				htmlStr+="<td>"+val.addr+"</td>";
-				htmlStr+="<td>"+val.tel+"</td>";
-				htmlStr+="<td onclick="+fdelete("+num+")"+"삭제</td>";
-	//			<td onclick="fdelete(${address.num})">삭제</td>
-				htmlStr+="</tr>";
-			});
-			$("table tbody").html(htmlStr);
-			}	
+			fsuccess(data);
+
+ 			}	
 		)			
 	}
 }

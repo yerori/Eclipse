@@ -42,7 +42,7 @@ $(document).ready(function(){
 					$("td:eq(4)", this).text();
 		$(opener.document).find("#zipcode").val($("td:eq(0)", this).text()); 
 		$(opener.document).find("#addr").val(address);
-		self.close();	
+			self.close();	
   		});			
 	})	
 });

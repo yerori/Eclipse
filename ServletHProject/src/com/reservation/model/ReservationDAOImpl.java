@@ -71,39 +71,39 @@ public class ReservationDAOImpl {
 		
 		
 		//예약 상세보기 
-				public ReservationDTO resDetail(int rsno) {
-					Connection con = null;
-					Statement st = null;
-					ResultSet rs = null;
-					ReservationDTO dto = null;
+		public ReservationDTO resDetail(int rsno) {
+			Connection con = null;
+			Statement st = null;
+			ResultSet rs = null;
+			ReservationDTO dto = null;
 					
-					try {
-						con=getConnection();
-						String sql = "select * from reservation where rsno = "+rsno;
-						st=con.createStatement();
-						rs=st.executeQuery(sql);
-						if(rs.next()) {
-							dto = new ReservationDTO();
-							dto.setGno(rs.getInt("gno"));
-							dto.setRsno(rs.getInt("rsno"));
-							dto.setOccupancy(rs.getInt("occupancy"));
-							dto.setTot_ad(rs.getInt("tot_ad"));
-							dto.setTot_ch(rs.getInt("tot_ch"));
-							dto.setStartdate(rs.getString("startdate").substring(0, 11)); //substring(a,b) : a부터 b까지 자르기
-							dto.setEnddate(rs.getString("enddate").substring(0, 11));
-							dto.setRname(rs.getString("rname"));
-							dto.setId(rs.getString("id"));
-							dto.setPay(rs.getString("pay"));
+			try {
+				con=getConnection();
+				String sql = "select * from reservation where rsno = "+rsno;
+				st=con.createStatement();
+				rs=st.executeQuery(sql);
+				if(rs.next()) {
+					dto = new ReservationDTO();
+					dto.setGno(rs.getInt("gno"));
+					dto.setRsno(rs.getInt("rsno"));
+					dto.setOccupancy(rs.getInt("occupancy"));
+					dto.setTot_ad(rs.getInt("tot_ad"));
+					dto.setTot_ch(rs.getInt("tot_ch"));
+					dto.setStartdate(rs.getString("startdate").substring(0, 11)); //substring(a,b) : a부터 b까지 자르기
+					dto.setEnddate(rs.getString("enddate").substring(0, 11));
+					dto.setRname(rs.getString("rname"));
+					dto.setId(rs.getString("id"));
+					dto.setPay(rs.getString("pay"));
 							
-						}
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						closeConnection(con, st, rs);
-					}
-					return dto;
 				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConnection(con, st, rs);
+			}
+			return dto;
+		}
 				
 		//예약 수정		
 			
@@ -144,43 +144,43 @@ public class ReservationDAOImpl {
 			
 		
 		//예약 보기 
-				public ArrayList<ReservationDTO> resList (){
-					Connection con = null;
-					Statement st = null;
-					ResultSet rs = null;
-					ArrayList<ReservationDTO> arr = new ArrayList<ReservationDTO>();
+		public ArrayList<ReservationDTO> resList (){
+			Connection con = null;
+			Statement st = null;
+			ResultSet rs = null;
+			ArrayList<ReservationDTO> arr = new ArrayList<ReservationDTO>();
 					
-					try {
-						con=getConnection();
-						String sql="select TO_CHAR(enddate,'YYYY-MM-DD'),rsno,occupancy,tot_ad,tot_ch,TO_CHAR(startdate,'YYYY-MM-DD'),rname,gno,id,pay "
-								+ "from reservation order by rsno desc";
-						st=con.createStatement();
-						rs=st.executeQuery(sql);
+			try {
+				con=getConnection();
+				String sql="select TO_CHAR(enddate,'YYYY-MM-DD'),rsno,occupancy,tot_ad,tot_ch,TO_CHAR(startdate,'YYYY-MM-DD'),rname,gno,id,pay "
+						+ "from reservation order by rsno desc";
+				st=con.createStatement();
+				rs=st.executeQuery(sql);
 						
-						while(rs.next()) {
-							ReservationDTO res = new ReservationDTO();
-							res.setEnddate(rs.getString("enddate"));
-							res.setRsno(rs.getInt("rsno"));
-							res.setOccupancy(rs.getInt("occupancy"));
-							res.setTot_ad(rs.getInt("tot_ad"));
-							res.setTot_ch(rs.getInt("tot_ch"));
-							res.setStartdate(rs.getString("startdate"));
-							res.setRname(rs.getString("rname"));
-							res.setGno(rs.getInt("gno"));
-							res.setId(rs.getString("id"));
-							res.setPay(rs.getString("pay"));
+				while(rs.next()) {
+					ReservationDTO res = new ReservationDTO();
+					res.setEnddate(rs.getString("enddate"));
+					res.setRsno(rs.getInt("rsno"));
+					res.setOccupancy(rs.getInt("occupancy"));
+					res.setTot_ad(rs.getInt("tot_ad"));
+					res.setTot_ch(rs.getInt("tot_ch"));
+					res.setStartdate(rs.getString("startdate"));
+					res.setRname(rs.getString("rname"));
+					res.setGno(rs.getInt("gno"));
+					res.setId(rs.getString("id"));
+					res.setPay(rs.getString("pay"));
 							
-							arr.add(res);						
-						}
-						
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally {
-						closeConnection(con, st, rs);
-					}
-					return arr;
+					arr.add(res);						
 				}
+						
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConnection(con, st, rs);
+			}
+			return arr;
+		}
 		
 		
 		//방 추가
@@ -443,31 +443,29 @@ public class ReservationDAOImpl {
 				//		+ "from(select * from room order by rno desc)aa) "
 					//	+ "where rn<=? and rn>=?";
 			//	String sql="select * from reservation rs, room r where rs.rname = r.rname order by rsno desc";
+				
 				String sql="select * from(select rownum rn,aa.* "
-						+ "from(select * from reservation, room order by rsno desc)aa) "
-						+ "where rn<=? and rn>=?";
+						+ "from(select rs.id, rs.rsno, rs.startdate,rs.enddate, rs.occupancy,rs.tot_ch,rs.tot_ad,r.price ,rs.rname from reservation rs, room r "
+						+ "where rs.rname = r.rname order by rsno desc)aa) where rn<=? and rn>=?";
 				ps=con.prepareStatement(sql);
 				ps.setInt(1, endRow);
 				ps.setInt(2, startRow);
 			
-				rs=ps.executeQuery(sql);
+				rs=ps.executeQuery();
 						
 				while(rs.next()) {
 					AdminDTO ad = new AdminDTO();
-					ad.setEnddate(rs.getString("enddate").substring(0,11));
-					ad.setGno(rs.getInt("gno"));
+
 					ad.setId(rs.getString("id"));
-					ad.setRno(rs.getInt("rno"));
-					ad.setRname(rs.getString("rname"));
-					ad.setTot_ad(rs.getInt("tot_ad"));
-					ad.setTot_ch(rs.getInt("tot_ch"));
-					ad.setPrice(rs.getString("price"));
-					ad.setRimage(rs.getString("rimage"));
-					ad.setOccupancy(rs.getInt("occupancy"));
 					ad.setRsno(rs.getInt("rsno"));
-					ad.setPay(rs.getString("pay"));
 					ad.setStartdate(rs.getString("startdate").substring(0,11));
-							
+					ad.setEnddate(rs.getString("enddate").substring(0,11));
+					ad.setOccupancy(rs.getInt("occupancy"));
+					ad.setTot_ch(rs.getInt("tot_ch"));
+					ad.setTot_ad(rs.getInt("tot_ad"));
+					ad.setPrice(rs.getString("price"));
+					ad.setRname(rs.getString("rname"));
+
 					arr.add(ad);						
 				}						
 			} catch (Exception e) {
